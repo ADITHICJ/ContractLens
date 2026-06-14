@@ -224,6 +224,24 @@ export default function PDFViewer({ pdfUrl, onPageChange, importantClauses = [] 
     setRenderedPages({});
   }, [scale, importantClauses.length]);
 
+  // Listen for external page scrolling requests (e.g. from chat citations)
+  useEffect(() => {
+    const handleScrollToPage = (e) => {
+      const pageNum = e.detail?.page;
+      if (pageNum && containerRef.current) {
+        const targetEl = containerRef.current.querySelector(`[data-page="${pageNum}"]`);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    };
+
+    window.addEventListener("scroll-to-pdf-page", handleScrollToPage);
+    return () => {
+      window.removeEventListener("scroll-to-pdf-page", handleScrollToPage);
+    };
+  }, []);
+
   // Trigger observer to track visible page while scrolling
   useEffect(() => {
     if (loading || numPages === 0) return;

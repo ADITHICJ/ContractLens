@@ -9,19 +9,18 @@ STOPWORDS = {
 }
 
 def tokenize(text):
-
+    # Remove physical index tags to prevent indexing metadata terms
+    cleaned_text = re.sub(r'<physical_index_\d+>', '', text.lower())
+    
     words = re.findall(
         r"\w+",
-        text.lower()
+        cleaned_text
     )
 
     return [
-
         word
-
         for word in words
-
-        if word not in STOPWORDS
+        if word not in STOPWORDS and not word.isdigit()
     ]
 
 def flatten_tree(nodes):

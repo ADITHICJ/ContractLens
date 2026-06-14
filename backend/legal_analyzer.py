@@ -328,3 +328,161 @@ FORMAT:
     )
 
     return result
+
+def analyze_gaps(nodes):
+    """
+    Calls Gemini to perform a Gap Analysis of missing critical boilerplate terms.
+    """
+    context = []
+    for node in nodes[:15]:
+        context.append(f"SECTION: {node.get('title')}\nCONTENT:\n{node.get('text', '')}")
+    full_context = "\n\n".join(context)[:4000]
+
+    prompt = f"""
+You are an expert contract gap auditor. Review these contract sections:
+====================
+{full_context}
+====================
+
+Audit the contract and identify if any standard, critical legal boilerplate terms are missing that would normally be expected in a catering services, mess management, or general operations service agreement.
+Verify missing clauses for:
+1. Intellectual Property Rights (ownership of equipment, software, or tools)
+2. Data Privacy & Confidentiality security regulations
+3. Mutual Termination for convenience (checks if only the client can terminate)
+4. Mediation / Dispute Escalation steps before entering formal Arbitration
+5. Subcontracting restrictions or explicitly defined subcontracting boundaries
+
+Return a valid JSON object only. Format:
+{{
+  "missing_clauses": [
+    {{
+      "title": "Missing Clause Name",
+      "impact_severity": "HIGH" or "MEDIUM" or "LOW",
+      "reason_missing": "Legal reason why its absence is a threat/risk.",
+      "simple_explanation": "A user-friendly, plain-English explanation of what this clause does and why a non-legal reader should care that it is missing.",
+      "draft_text": "Balanced, standard draft boilerplate text to insert to remedy the gap."
+    }}
+  ]
+}}
+"""
+    response_text = safe_generate(prompt)
+    if response_text == "ERROR":
+        return {"missing_clauses": []}
+
+    response_text = response_text.replace("```json", "").replace("```", "").strip()
+    try:
+        match = re.search(r"\{.*\}", response_text, re.DOTALL)
+        if match:
+            return json.loads(match.group())
+    except Exception as e:
+        print(f"Error parsing gap analysis JSON: {e}")
+    return {"missing_clauses": []}
+
+
+def extract_metadata(nodes):
+    """
+    Calls Gemini to extract high-level contract metadata for the profile card.
+    """
+    context = []
+    for node in nodes[:15]:
+        context.append(f"SECTION: {node.get('title')}\nCONTENT:\n{node.get('text', '')}")
+    full_context = "\n\n".join(context)[:4000]
+
+    prompt = f"""
+Analyze the introductory sections of this contract and extract the following metadata entities:
+====================
+{full_context}
+====================
+
+Return a valid JSON object only. Format:
+{{
+  "effective_date": "Date format e.g. June 12, 2026 or 'Not Specified'",
+  "duration": "Duration e.g. 2 Years or 'Not Specified'",
+  "first_party": "Name of the first party/institution (client)",
+  "second_party": "Name of the second party (contractor/service provider) or 'Not Specified'",
+  "jurisdiction": "Governing law/courts jurisdiction e.g. Kanpur Courts or 'Not Specified'"
+}}
+"""
+    response_text = safe_generate(prompt)
+    if response_text == "ERROR":
+        return {
+            "effective_date": "Not Specified",
+            "duration": "Not Specified",
+            "first_party": "Not Specified",
+            "second_party": "Not Specified",
+            "jurisdiction": "Not Specified"
+        }
+
+    response_text = response_text.replace("```json", "").replace("```", "").strip()
+    try:
+        match = re.search(r"\{.*\}", response_text, re.DOTALL)
+        if match:
+            return json.loads(match.group())
+    except Exception as e:
+        print(f"Error parsing metadata JSON: {e}")
+    return {
+        "effective_date": "Not Specified",
+        "duration": "Not Specified",
+        "first_party": "Not Specified",
+        "second_party": "Not Specified",
+        "jurisdiction": "Not Specified"
+    }
+
+
+def find_placeholders(pdf_path):
+    """
+    Uses PyMuPDF (fitz) to scan PDF text and locate empty blanks, underlines, or placeholders.
+    """
+    placeholders = []
+    seen_lines = set()
+    try:
+        import fitz
+        doc = fitz.open(pdf_path)
+        for page_idx, page in enumerate(doc):
+            text = page.get_text()
+            lines = text.split('\n')
+            for line_idx, line in enumerate(lines):
+                clean_line = line.strip()
+                if not clean_line:
+                    continue
+                
+                # Check if this line contains underscores, dots, or bracket parameters
+                has_placeholder = (
+                    re.search(r'_{3,}', clean_line) or 
+                    re.search(r'\.{4,}', clean_line) or 
+                    re.search(r'\[[^\]]*\]', clean_line)
+                )
+                
+                if has_placeholder:
+                    # Normalize structure to check for duplicate/repetitive layers
+                    norm_line = re.sub(r'\s+', ' ', clean_line).strip().lower()
+                    context_key = re.sub(r'_{3,}', '___', norm_line)
+                    context_key = re.sub(r'\.{4,}', '...', context_key)
+                    context_key = re.sub(r'\[[^\]]*\]', '[ ]', context_key)
+                    
+                    if context_key not in seen_lines:
+                        seen_lines.add(context_key)
+                        
+                        # Find the first match to show as the badge
+                        m = (
+                            re.search(r'_{3,}', clean_line) or 
+                            re.search(r'\.{4,}', clean_line) or 
+                            re.search(r'\[[^\]]*\]', clean_line)
+                        )
+                        matched_text = m.group() if m else "________"
+                        
+                        # Construct a rich snippet using adjacent lines for context
+                        prev_line = lines[line_idx-1].strip() if line_idx > 0 else ""
+                        next_line = lines[line_idx+1].strip() if line_idx < len(lines)-1 else ""
+                        context_snippet = f"... {prev_line} {clean_line} {next_line} ...".replace('\n', ' ').strip()
+                        # Clean multiple spaces
+                        context_snippet = re.sub(r'\s+', ' ', context_snippet)
+                        
+                        placeholders.append({
+                            "placeholder": matched_text,
+                            "page": page_idx + 1,
+                            "context": context_snippet
+                        })
+    except Exception as e:
+        print(f"Error extracting placeholders: {e}")
+    return placeholders

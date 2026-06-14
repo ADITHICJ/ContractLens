@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 # Import user's existing pipeline modules
 from utils import flatten_tree
 from retrieval import ContractRetriever
-from legal_analyzer import analyze_nodes
+from legal_analyzer import analyze_nodes, analyze_gaps, extract_metadata, find_placeholders
 from pageindexservice import generate_pageindex_tree
 from chat_service import answer_contract_question
 
@@ -135,6 +135,36 @@ async def upload_contract(file: UploadFile = File(...)):
 
         # 3. Analyze retrieved nodes with Gemini
         analysis_result = analyze_nodes(retrieved_nodes, document_id)
+        analysis_result["total_sections"] = len(flat_nodes)
+
+        # 4. Perform gap analysis, metadata extraction, and placeholders check
+        try:
+            gap_result = analyze_gaps(flat_nodes)
+            analysis_result["gap_analysis"] = gap_result.get("missing_clauses", [])
+        except Exception as e:
+            print(f"Gap analysis failed: {e}")
+            analysis_result["gap_analysis"] = []
+
+        try:
+            metadata_result = extract_metadata(flat_nodes)
+            analysis_result["metadata"] = metadata_result
+        except Exception as e:
+            print(f"Metadata extraction failed: {e}")
+            analysis_result["metadata"] = {
+                "effective_date": "Not Specified",
+                "duration": "Not Specified",
+                "first_party": "Not Specified",
+                "second_party": "Not Specified",
+                "jurisdiction": "Not Specified"
+            }
+
+        try:
+            placeholders_result = find_placeholders(pdf_path)
+            analysis_result["placeholders"] = placeholders_result
+        except Exception as e:
+            print(f"Placeholders extraction failed: {e}")
+            analysis_result["placeholders"] = []
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Analysis pipeline failed: {str(e)}")
 

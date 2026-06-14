@@ -67,6 +67,11 @@ def answer_contract_question(question: str, tree_data, contract_id: str) -> str:
 You are an expert legal assistant for the ContractLens platform.
 Answer the user's question using only the provided contract context sections. If the answer cannot be found in the context, state that you cannot find the answer in the document, but still try to be as helpful as possible based on the text.
 
+CRITICAL CITATION REQUIREMENT:
+Whenever you reference, quote, or rely on any section of the contract in your answer, you MUST append a page citation in the exact format: `[Page X / Section Title](citation://page=X)` or `[Page X](citation://page=X)` where X is the exact 1-indexed page number from the context section (e.g. context page: 22 means X=22).
+Example: "The contract limits liability for delay to 10% of the value as detailed in [Page 15 / Section 5.1](citation://page=15)."
+Always format page numbers as `citation://page=X` links.
+
 Question: {question}
 
 Context sections from the contract:

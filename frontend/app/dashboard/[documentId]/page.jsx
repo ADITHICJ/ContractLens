@@ -82,7 +82,13 @@ export default function DashboardPage() {
             <ShieldCheck className="h-5 w-5 text-indigo-400" />
             1. Contract Health & Metrics
           </h2>
-          <ContractSummary importantClauses={importantClauses} />
+          <ContractSummary 
+            importantClauses={importantClauses} 
+            metadata={data?.metadata}
+            gapAnalysis={data?.gap_analysis}
+            placeholders={data?.placeholders}
+            totalSections={data?.total_sections}
+          />
         </section>
 
         {/* SECTION 2: Risk Analysis */}
