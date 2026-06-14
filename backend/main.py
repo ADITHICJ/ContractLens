@@ -31,6 +31,32 @@ app.add_middleware(
 UPLOAD_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "uploads")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
+def find_existing_tree(new_pdf_path, upload_dir, current_doc_id):
+    import hashlib
+    try:
+        sha256 = hashlib.sha256()
+        with open(new_pdf_path, "rb") as f:
+            for chunk in iter(lambda: f.read(4096), b""):
+                sha256.update(chunk)
+        new_hash = sha256.hexdigest()
+        
+        for root, dirs, files in os.walk(upload_dir):
+            if current_doc_id in root:
+                continue
+            if "contract.pdf" in files and "pageindex_tree.json" in files:
+                existing_pdf = os.path.join(root, "contract.pdf")
+                existing_sha256 = hashlib.sha256()
+                with open(existing_pdf, "rb") as f:
+                    for chunk in iter(lambda: f.read(4096), b""):
+                        existing_sha256.update(chunk)
+                if existing_sha256.hexdigest() == new_hash:
+                    existing_tree = os.path.join(root, "pageindex_tree.json")
+                    print(f"[PAGEINDEX] Found existing pageindex_tree.json in {root} matching PDF hash.")
+                    return existing_tree
+    except Exception as e:
+        print(f"[PAGEINDEX] Error checking for existing tree: {e}")
+    return None
+
 class ChatRequest(BaseModel):
     documentId: str
     question: str
@@ -39,9 +65,8 @@ class ChatRequest(BaseModel):
 async def upload_contract(file: UploadFile = File(...)):
     """
     Step 1: Store uploaded PDF.
-    Step 2: Upload PDF to PageIndex.
-    Step 3-5: Generate, Fetch, and Save PageIndex Tree.
-    Step 6-8: Run RAG pipeline (flatten_tree, ContractRetriever, analyze_nodes) and return results.
+    Step 2: Check for existing pageindex tree locally, or generate it.
+    Step 3: Run RAG pipeline and analyzer.
     """
     if not file.filename.lower().endswith('.pdf'):
         raise HTTPException(status_code=400, detail="Only PDF files are supported.")
@@ -58,42 +83,48 @@ async def upload_contract(file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save PDF on server: {str(e)}")
 
-    # Step 2-5: Generate and fetch PageIndex tree
-    use_mock = os.getenv("USE_MOCK_PIPELINE", "false").lower() == "true"
-    if use_mock:
-        print("[MOCK MODE] Copying pre-generated PageIndex tree and Gemini analysis...")
-        template_dir = os.path.join(UPLOAD_DIR, "4a04b373-e5e8-4082-98cc-2a8c9a7609c2")
-        if not os.path.exists(template_dir):
-            raise HTTPException(
-                status_code=500,
-                detail="Mock template directory '4a04b373-e5e8-4082-98cc-2a8c9a7609c2' not found in uploads."
-            )
-        try:
-            shutil.copy(os.path.join(template_dir, "pageindex_tree.json"), os.path.join(doc_dir, "pageindex_tree.json"))
-            shutil.copy(os.path.join(template_dir, "analysis.json"), os.path.join(doc_dir, "analysis.json"))
-            with open(os.path.join(doc_dir, "analysis.json"), "r", encoding="utf-8") as f:
-                analysis_result = json.load(f)
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Failed to copy mock template files: {str(e)}")
-            
-        return {
-            "documentId": document_id,
-            "analysis": analysis_result
-        }
-
-    try:
-        tree_data = generate_pageindex_tree(pdf_path)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"PageIndex tree generation failed: {str(e)}")
-
+    # Step 2: Check for existing pageindex_tree.json
     tree_path = os.path.join(doc_dir, "pageindex_tree.json")
-    try:
-        with open(tree_path, "w", encoding="utf-8") as f:
-            json.dump(tree_data, f, indent=2, ensure_ascii=False)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to save PageIndex tree: {str(e)}")
+    found_existing = False
+    
+    # 2a. Look for matching PDF file in other directories
+    existing_tree_path = find_existing_tree(pdf_path, UPLOAD_DIR, document_id)
+    if existing_tree_path and os.path.exists(existing_tree_path):
+        try:
+            shutil.copy(existing_tree_path, tree_path)
+            found_existing = True
+            print("[PAGEINDEX] Reused existing pageindex_tree.json from matching contract.")
+        except Exception as e:
+            print(f"[PAGEINDEX] Failed to copy matching tree: {e}")
+            
+    # 2b. Fall back to mock template if USE_MOCK_PIPELINE is true
+    if not found_existing and os.getenv("USE_MOCK_PIPELINE", "false").lower() == "true":
+        template_tree = os.path.join(UPLOAD_DIR, "4a04b373-e5e8-4082-98cc-2a8c9a7609c2", "pageindex_tree.json")
+        if os.path.exists(template_tree):
+            try:
+                shutil.copy(template_tree, tree_path)
+                found_existing = True
+                print("[PAGEINDEX] Reused template pageindex_tree.json in mock mode.")
+            except Exception as e:
+                print(f"[PAGEINDEX] Failed to copy template tree: {e}")
+                
+    # 2c. If still not found, generate it using PageIndex API
+    if not found_existing:
+        try:
+            tree_data = generate_pageindex_tree(pdf_path)
+            with open(tree_path, "w", encoding="utf-8") as f:
+                json.dump(tree_data, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"PageIndex tree generation failed: {str(e)}")
+    else:
+        # Load the copied tree structure
+        try:
+            with open(tree_path, "r", encoding="utf-8") as f:
+                tree_data = json.load(f)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to load existing tree: {str(e)}")
 
-    # Step 6: Run existing pipeline
+    # Step 3: Run Gemini analyzer (ALWAYS active)
     try:
         # 1. Flatten the tree nodes
         flat_nodes = flatten_tree(tree_data)
@@ -145,6 +176,93 @@ async def get_pdf(documentId: str):
         raise HTTPException(status_code=404, detail="PDF not found for this document ID.")
     
     return FileResponse(pdf_path, media_type="application/pdf", filename="contract.pdf")
+
+@app.get("/download-highlighted/{documentId}")
+async def download_highlighted(documentId: str):
+    """
+    Generates a highlighted PDF using PyMuPDF and returns it for download.
+    """
+    doc_dir = os.path.join(UPLOAD_DIR, documentId)
+    pdf_path = os.path.join(doc_dir, "contract.pdf")
+    analysis_path = os.path.join(doc_dir, "analysis.json")
+    output_path = os.path.join(doc_dir, "highlighted_contract.pdf")
+
+    if not os.path.exists(pdf_path):
+        raise HTTPException(status_code=404, detail="Original PDF not found.")
+    
+    if not os.path.exists(analysis_path):
+        return FileResponse(pdf_path, media_type="application/pdf", filename="contract.pdf")
+
+    if os.path.exists(output_path):
+        return FileResponse(output_path, media_type="application/pdf", filename="highlighted_contract.pdf")
+
+    try:
+        import fitz
+        doc = fitz.open(pdf_path)
+        with open(analysis_path, "r", encoding="utf-8") as f:
+            analysis = json.load(f)
+
+        clauses = analysis.get("important_clauses", [])
+        for c in clauses:
+            level = c.get("risk_level", "MEDIUM").upper()
+            if c.get("cross_clause_conflicts"):
+                color = (0.39, 0.4, 0.94)
+            elif level == "HIGH":
+                color = (0.94, 0.27, 0.27)
+            elif level == "LOW":
+                color = (0.06, 0.73, 0.5)
+            else:
+                color = (0.96, 0.62, 0.04)
+
+            quotes = []
+            if c.get("highlighted_quotes"):
+                for q in c["highlighted_quotes"]:
+                    if q.get("quote"):
+                        quotes.append({"quote": q["quote"], "page": q.get("page") or c.get("page")})
+            elif c.get("section_title"):
+                quotes.append({"quote": c["section_title"], "page": c.get("page")})
+
+            for q in quotes:
+                quote_text = q["quote"].strip()
+                page_idx = q["page"] - 1
+                if page_idx < 0 or page_idx >= len(doc):
+                    continue
+
+                page = doc[page_idx]
+                rects = page.search_for(quote_text)
+
+                if not rects:
+                    sentences = [s.strip() for s in quote_text.split(".") if len(s.strip()) > 10]
+                    if sentences:
+                        for s in sentences:
+                            s_rects = page.search_for(s)
+                            for r in s_rects:
+                                rects.append(r)
+
+                if not rects:
+                    words = quote_text.split()
+                    chunk_size = 6
+                    chunks = []
+                    for i in range(0, len(words), chunk_size):
+                        chunk = " ".join(words[i:i+chunk_size])
+                        if len(chunk) > 15:
+                            chunks.append(chunk)
+                    if chunks:
+                        for chunk in chunks:
+                            c_rects = page.search_for(chunk)
+                            for r in c_rects:
+                                rects.append(r)
+
+                for r in rects:
+                    annot = page.add_highlight_annot(r)
+                    annot.set_colors(stroke=color)
+                    annot.update()
+
+        doc.save(output_path)
+        return FileResponse(output_path, media_type="application/pdf", filename="highlighted_contract.pdf")
+    except Exception as e:
+        print(f"Error highlighting PDF: {e}")
+        return FileResponse(pdf_path, media_type="application/pdf", filename="contract.pdf")
 
 @app.post("/chat")
 async def chat(request: ChatRequest):

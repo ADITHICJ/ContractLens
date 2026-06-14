@@ -7,7 +7,7 @@ export default function ContractSummary({ importantClauses = [] }) {
   const highRisks = importantClauses.filter(
     (c) => c.risk_level?.toUpperCase() === "HIGH"
   ).length;
-  
+
   const medRisks = importantClauses.filter(
     (c) => c.risk_level?.toUpperCase() === "MEDIUM"
   ).length;
@@ -21,13 +21,24 @@ export default function ContractSummary({ importantClauses = [] }) {
   let overallScore = 0;
   if (totalRisky > 0) {
     const totalScore = importantClauses.reduce((acc, curr) => {
-      // Use criticality_score if available (0-100), otherwise fallback
-      const score = curr.criticality_score !== undefined ? curr.criticality_score : 
-                    (curr.risk_level?.toUpperCase() === "HIGH" ? 85 : 
-                     curr.risk_level?.toUpperCase() === "MEDIUM" ? 50 : 20);
+      const score =
+        curr.criticality_score !== undefined &&
+          curr.criticality_score !== null
+          ? curr.criticality_score * 10 // Convert 1-10 → 0-100
+          : (
+            curr.risk_level?.toUpperCase() === "HIGH"
+              ? 85
+              : curr.risk_level?.toUpperCase() === "MEDIUM"
+                ? 50
+                : 20
+          );
+
       return acc + score;
     }, 0);
-    overallScore = Math.round(totalScore / totalRisky);
+
+    overallScore = Math.round(
+      totalScore / totalRisky
+    );
   }
 
   // Get risk rating text
@@ -64,9 +75,8 @@ export default function ContractSummary({ importantClauses = [] }) {
               cx="50"
               cy="50"
               r="40"
-              className={`transition-all duration-1000 ${
-                overallScore >= 70 ? "stroke-red-500" : overallScore >= 40 ? "stroke-amber-500" : "stroke-emerald-500"
-              }`}
+              className={`transition-all duration-1000 ${overallScore >= 70 ? "stroke-red-500" : overallScore >= 40 ? "stroke-amber-500" : "stroke-emerald-500"
+                }`}
               strokeWidth="8"
               strokeDasharray={2 * Math.PI * 40}
               strokeDashoffset={2 * Math.PI * 40 * (1 - overallScore / 100)}
@@ -93,7 +103,9 @@ export default function ContractSummary({ importantClauses = [] }) {
             <Layers className="h-5 w-5 text-indigo-400" />
           </div>
           <div className="mt-4">
-            <span className="text-3xl font-extrabold text-white">20</span>
+            <span className="text-3xl font-extrabold text-white">
+              {importantClauses.length}
+            </span>
             <span className="text-xs text-slate-500 block mt-1">Sections from document tree</span>
           </div>
         </div>

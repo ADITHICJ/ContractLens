@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import * as pdfjsLib from "pdfjs-dist";
-import { ZoomIn, ZoomOut, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { ZoomIn, ZoomOut, ChevronLeft, ChevronRight, Loader2, Download } from "lucide-react";
 
 // Configure local CDN worker to avoid Next.js bundling issues
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`;
@@ -16,6 +16,37 @@ export default function PDFViewer({ pdfUrl, onPageChange, importantClauses = [] 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [renderedPages, setRenderedPages] = useState({});
+  const [downloading, setDownloading] = useState(false);
+
+  const handleDownload = async () => {
+    try {
+      setDownloading(true);
+      const documentId = pdfUrl.split("/").pop();
+      const apiBase = pdfUrl.includes("/pdf/") 
+        ? pdfUrl.substring(0, pdfUrl.indexOf("/pdf/")) 
+        : "http://localhost:8000";
+      
+      const downloadUrl = `${apiBase}/download-highlighted/${documentId}`;
+      
+      const response = await fetch(downloadUrl);
+      if (!response.ok) throw new Error("Download failed");
+      
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${documentId}_highlighted.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to download highlighted PDF. Make sure backend is running.");
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   // Cancel all active render tasks on unmount
   useEffect(() => {
@@ -288,21 +319,38 @@ export default function PDFViewer({ pdfUrl, onPageChange, importantClauses = [] 
           </button>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleZoomOut}
+              disabled={scale <= 0.6}
+              className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg disabled:opacity-30 disabled:pointer-events-none transition-colors"
+            >
+              <ZoomOut className="h-4 w-4" />
+            </button>
+            <span className="text-xs font-semibold text-slate-300">{Math.round(scale * 100)}%</span>
+            <button
+              onClick={handleZoomIn}
+              disabled={scale >= 2.0}
+              className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg disabled:opacity-30 disabled:pointer-events-none transition-colors"
+            >
+              <ZoomIn className="h-4 w-4" />
+            </button>
+          </div>
+
+          <span className="h-4 w-px bg-slate-800" />
+
           <button
-            onClick={handleZoomOut}
-            disabled={scale <= 0.6}
-            className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg disabled:opacity-30 disabled:pointer-events-none transition-colors"
+            onClick={handleDownload}
+            disabled={downloading}
+            className="flex items-center gap-1.5 py-1 px-2.5 text-xs font-semibold text-indigo-400 hover:text-indigo-300 hover:bg-indigo-950/30 rounded-lg border border-indigo-900/50 transition-colors disabled:opacity-50"
           >
-            <ZoomOut className="h-4 w-4" />
-          </button>
-          <span className="text-xs font-semibold text-slate-300">{Math.round(scale * 100)}%</span>
-          <button
-            onClick={handleZoomIn}
-            disabled={scale >= 2.0}
-            className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg disabled:opacity-30 disabled:pointer-events-none transition-colors"
-          >
-            <ZoomIn className="h-4 w-4" />
+            {downloading ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : (
+              <Download className="h-3.5 w-3.5" />
+            )}
+            Download Highlighted
           </button>
         </div>
       </div>

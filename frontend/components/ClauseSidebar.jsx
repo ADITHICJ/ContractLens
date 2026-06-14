@@ -55,16 +55,27 @@ export default function ClauseSidebar({ importantClauses = [], currentPage }) {
                 </span>
 
                 {/* Original Quote */}
-                {clause.highlighted_quotes && clause.highlighted_quotes.length > 0 && (
-                  <div>
-                    <span className="text-[10px] text-slate-500 font-bold block mb-1">
-                      Original Quote:
-                    </span>
-                    <p className="text-xs text-slate-400 italic bg-slate-950/80 border-l border-slate-800 p-2 rounded-r-md">
-                      "{clause.highlighted_quotes[0].quote}"
-                    </p>
-                  </div>
-                )}
+                {clause.highlighted_quotes &&
+                  clause.highlighted_quotes.length > 0 && (
+                    <div>
+                      <span className="text-[10px] text-slate-500 font-bold block mb-2">
+                        Original Quotes:
+                      </span>
+
+                      <div className="space-y-2">
+                        {clause.highlighted_quotes.map(
+                          (quoteObj, quoteIdx) => (
+                            <p
+                              key={quoteIdx}
+                              className="text-xs text-slate-400 italic bg-slate-950/80 border-l border-slate-800 p-2 rounded-r-md"
+                            >
+                              "{quoteObj.quote}"
+                            </p>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                 {/* Explanation */}
                 <div>

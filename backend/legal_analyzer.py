@@ -174,11 +174,11 @@ You are an expert legal contract intelligence system.
 Analyze the following contract sections.
 
 IMPORTANT:
-- Detect ALL legally risky clauses
-- Do NOT limit output to top risks
-- Merge related risks from same section
-- Avoid duplicate sections
-- Ignore harmless administrative sections
+- Detect ALL legally risky clauses.
+- Do NOT limit output to top risks.
+- Merge related risks from the same section.
+- Avoid duplicate sections.
+- Ignore harmless administrative sections.
 
 DETECT:
 - indemnity clauses
@@ -211,28 +211,54 @@ FOR EACH RISK RETURN:
 - legal_reason
 - simple_reason
 - recommendation
+- highlighted_quotes
 
-IMPORTANT FOR highlighted_quotes:
+CRITICAL REQUIREMENT FOR highlighted_quotes:
 
-- Return at least one highlighted quote for every risk.
-- The quote MUST be copied EXACTLY from CONTENT.
-- NEVER paraphrase.
-- NEVER summarize.
-- NEVER rewrite wording.
-- NEVER invent text.
-- NEVER combine text from multiple sections.
-- The quote must come from the SAME PAGE and SAME SECTION as the risk.
-- The quote must exist verbatim inside CONTENT.
-- Quotes must start and end at sentence boundaries.
-- Quote length should be between 20 and 150 words.
-- If multiple risky sentences exist, return the most important one.
+highlighted_quotes.quote MUST be copied EXACTLY from CONTENT.
+
+Before returning a quote:
+
+1. Find the risky sentence inside CONTENT.
+2. Copy the sentence directly from CONTENT.
+3. Do NOT modify any word.
+4. Do NOT rewrite grammar.
+5. Do NOT summarize.
+6. Do NOT paraphrase.
+7. Do NOT shorten the sentence.
+8. Do NOT combine multiple sections.
+9. Do NOT invent text.
+10. The quote MUST exist verbatim inside CONTENT.
+11. The quote MUST come from the SAME PAGE and SAME SECTION as the risk.
+12. Quotes must start and end at sentence boundaries.
+13. Return 1-3 complete sentences copied exactly from CONTENT.
+14. Preserve punctuation exactly as written.
+
+VALID EXAMPLE:
+
+CONTENT:
+"The Institute shall have the right to terminate the agreement without assigning any reason."
+
+QUOTE:
+"The Institute shall have the right to terminate the agreement without assigning any reason."
+
+INVALID EXAMPLE:
+
+CONTENT:
+"The Institute shall have the right to terminate the agreement without assigning any reason."
+
+QUOTE:
+"The Institute may terminate the agreement at any time."
+
+The INVALID example changes wording and MUST NEVER be returned.
 
 ALSO DETECT:
 
 - contradictory clauses
 - conflicting obligations
 
-DOCUMENT:
+CONTRACT SECTIONS:
+
 {full_context}
 
 Return ONLY VALID JSON.
@@ -253,7 +279,7 @@ FORMAT:
       "recommendation": "",
       "highlighted_quotes": [
         {{
-          "quote": "",
+          "quote": "EXACT SENTENCE COPIED VERBATIM FROM CONTENT",
           "page": 0
         }}
       ],
