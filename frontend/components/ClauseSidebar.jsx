@@ -6,9 +6,11 @@ import { Sparkles, FileWarning, Lightbulb, AlertTriangle } from "lucide-react";
 export default function ClauseSidebar({ importantClauses = [], currentPage }) {
   // Find clauses matching current page
   const pageClauses = importantClauses.filter(
-    (clause) => 
-      clause.page === currentPage || 
-      (clause.highlighted_quotes && clause.highlighted_quotes.some(q => (q.page || clause.page) === currentPage))
+    (clause) =>
+      Number(clause.page) === Number(currentPage) ||
+      clause.highlighted_quotes?.some(
+        q => Number(q.page || clause.page) === Number(currentPage)
+      )
   );
 
   return (
@@ -35,7 +37,7 @@ export default function ClauseSidebar({ importantClauses = [], currentPage }) {
           pageClauses.map((clause, idx) => {
             const levelConfig = RISK_LEVELS[clause.risk_level?.toUpperCase()] || RISK_LEVELS.LOW;
             return (
-              <div 
+              <div
                 key={idx}
                 className={`rounded-xl border bg-slate-950/40 p-4 space-y-3 shadow-md transition-all duration-300 ${levelConfig.borderClass}`}
               >

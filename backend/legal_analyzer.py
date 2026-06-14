@@ -212,6 +212,21 @@ FOR EACH RISK RETURN:
 - simple_reason
 - recommendation
 
+IMPORTANT FOR highlighted_quotes:
+
+- Return at least one highlighted quote for every risk.
+- The quote MUST be copied EXACTLY from CONTENT.
+- NEVER paraphrase.
+- NEVER summarize.
+- NEVER rewrite wording.
+- NEVER invent text.
+- NEVER combine text from multiple sections.
+- The quote must come from the SAME PAGE and SAME SECTION as the risk.
+- The quote must exist verbatim inside CONTENT.
+- Quotes must start and end at sentence boundaries.
+- Quote length should be between 20 and 150 words.
+- If multiple risky sentences exist, return the most important one.
+
 ALSO DETECT:
 
 - contradictory clauses

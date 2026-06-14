@@ -353,11 +353,19 @@ const PageWrapper = ({ pageNumber, pdf, scale, renderPage, numPages, importantCl
   );
 };
 
-// Function to map clean quote substring back to individual textItem bounding boxes in viewport space
-const findHighlightRects = (quote, textItems, viewport) => {
-  if (!quote || !textItems?.length) return [];
+const findHighlightRects = (
+  quote,
+  textItems,
+  viewport
+) => {
+  if (!quote || !textItems?.length) {
+    return [];
+  }
 
-  // Build page text exactly as PDF.js sees it
+  // ==========================================
+  // Build page text
+  // ==========================================
+
   let fullText = "";
   const charToItemMap = [];
 
@@ -365,67 +373,119 @@ const findHighlightRects = (quote, textItems, viewport) => {
     const str = item.str || "";
 
     for (let i = 0; i < str.length; i++) {
+      fullText += str[i];
       charToItemMap.push(itemIdx);
     }
 
-    fullText += str;
-
-    // preserve spaces between items
-    charToItemMap.push(itemIdx);
     fullText += " ";
+    charToItemMap.push(itemIdx);
   });
 
-  // Normalize whitespace only
+  // ==========================================
+  // Normalization
+  // ==========================================
+
   const normalize = (text) =>
     text
+      .replace(/[^\w\s]/g, "")
       .replace(/\s+/g, " ")
       .trim()
       .toLowerCase();
 
-  const normalizedPageText = normalize(fullText);
-  const normalizedQuote = normalize(quote);
+  const normalizedPageText =
+    normalize(fullText);
 
-  if (!normalizedQuote) return [];
+  const normalizedQuote =
+    normalize(quote);
 
-  // Exact search only
-  const matchStart = normalizedPageText.indexOf(normalizedQuote);
-
-  if (matchStart === -1) {
-    console.warn("Exact quote not found:", quote);
+  if (!normalizedQuote) {
     return [];
   }
 
-  const matchEnd = matchStart + normalizedQuote.length;
+  // ==========================================
+  // Use first 20 words only
+  // ==========================================
 
+  const words =
+    normalizedQuote.split(" ");
+
+  const searchText =
+    words
+      .slice(
+        0,
+        Math.min(words.length, 20)
+      )
+      .join(" ");
+
+  const matchStart =
+    normalizedPageText.indexOf(
+      searchText
+    );
+
+  if (matchStart === -1) {
+    console.warn(
+      "Quote not found:",
+      searchText
+    );
+    return [];
+  }
+
+  const matchEnd =
+    matchStart + searchText.length;
+
+  // ==========================================
   // Build normalized index map
+  // IMPORTANT:
+  // Must use SAME normalization logic
+  // ==========================================
+
   const normalizedIndexMap = [];
+
   let normalizedBuilder = "";
 
-  for (let i = 0; i < fullText.length; i++) {
-    const ch = fullText[i];
+  for (
+    let i = 0;
+    i < fullText.length;
+    i++
+  ) {
+    let ch = fullText[i];
 
+    // Remove punctuation
+    if (/[^\w\s]/.test(ch)) {
+      continue;
+    }
+
+    // Normalize spaces
     if (/\s/.test(ch)) {
       if (
         normalizedBuilder.length > 0 &&
-        normalizedBuilder[normalizedBuilder.length - 1] !== " "
+        normalizedBuilder[
+        normalizedBuilder.length - 1
+        ] !== " "
       ) {
         normalizedBuilder += " ";
         normalizedIndexMap.push(i);
       }
-    } else {
-      normalizedBuilder += ch.toLowerCase();
-      normalizedIndexMap.push(i);
+
+      continue;
     }
+
+    normalizedBuilder +=
+      ch.toLowerCase();
+
+    normalizedIndexMap.push(i);
   }
 
   const startOriginal =
     normalizedIndexMap[matchStart];
 
   const endOriginal =
-    normalizedIndexMap[Math.min(
+    normalizedIndexMap[
+    Math.min(
       matchEnd - 1,
       normalizedIndexMap.length - 1
-    )];
+    )
+    ];
 
   if (
     startOriginal === undefined ||
@@ -434,45 +494,84 @@ const findHighlightRects = (quote, textItems, viewport) => {
     return [];
   }
 
-  const matchedItems = new Set();
+  // ==========================================
+  // Find matching text items
+  // ==========================================
 
-  for (let i = startOriginal; i <= endOriginal; i++) {
-    const itemIdx = charToItemMap[i];
+  const matchedItems =
+    new Set();
+
+  for (
+    let i = startOriginal;
+    i <= endOriginal;
+    i++
+  ) {
+    const itemIdx =
+      charToItemMap[i];
 
     if (itemIdx !== undefined) {
       matchedItems.add(itemIdx);
     }
   }
 
+  // ==========================================
+  // Build highlight rectangles
+  // ==========================================
+
   const rects = [];
 
-  matchedItems.forEach((itemIdx) => {
-    const item = textItems[itemIdx];
+  matchedItems.forEach(
+    (itemIdx) => {
+      const item =
+        textItems[itemIdx];
 
-    if (!item?.transform) return;
+      if (
+        !item ||
+        !item.transform
+      ) {
+        return;
+      }
 
-    const x = item.transform[4];
-    const y = item.transform[5];
-    const width = item.width || 0;
-    const height = item.height || 0;
+      const x =
+        item.transform[4];
 
-    const rect = [
-      x,
-      y,
-      x + width,
-      y + height
-    ];
+      const y =
+        item.transform[5];
 
-    const [vx1, vy1, vx2, vy2] =
-      viewport.convertToViewportRectangle(rect);
+      const width =
+        item.width || 0;
 
-    rects.push({
-      x: Math.min(vx1, vx2),
-      y: Math.min(vy1, vy2) - 2,
-      w: Math.abs(vx2 - vx1) + 2,
-      h: Math.abs(vy2 - vy1) + 4,
-    });
-  });
+      const height =
+        item.height || 0;
+
+      const rect = [
+        x,
+        y,
+        x + width,
+        y + height
+      ];
+
+      const [
+        vx1,
+        vy1,
+        vx2,
+        vy2
+      ] =
+        viewport.convertToViewportRectangle(
+          rect
+        );
+
+      rects.push({
+        x: Math.min(vx1, vx2),
+        y:
+          Math.min(vy1, vy2) - 2,
+        w:
+          Math.abs(vx2 - vx1) + 2,
+        h:
+          Math.abs(vy2 - vy1) + 4,
+      });
+    }
+  );
 
   return rects;
 };
