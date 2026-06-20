@@ -1,7 +1,7 @@
 import React from "react";
 import { AlertTriangle, ShieldCheck, Layers, AlertOctagon, FileWarning } from "lucide-react";
 
-export default function ContractSummary({ 
+export default function ContractSummary({
   importantClauses = [],
   metadata = {},
   gapAnalysis = [],
@@ -27,20 +27,52 @@ export default function ContractSummary({
   const safeGapAnalysis = gapAnalysis || [];
   const safePlaceholders = placeholders || [];
   const displayTotalSections = totalSections || 104;
-  const totalRisky = importantClauses.length;
 
-  const highRisks = importantClauses.filter(
-    (c) => c.risk_level?.toUpperCase() === "HIGH"
-  ).length;
+  const riskCounts = importantClauses.reduce(
+    (acc, clause) => {
+      const level = clause.risk_level?.trim().toUpperCase();
 
-  const medRisks = importantClauses.filter(
-    (c) => c.risk_level?.toUpperCase() === "MEDIUM"
-  ).length;
+      switch (level) {
+        case "CRITICAL":
+          acc.critical++;
+          break;
 
-  const lowRisks = importantClauses.filter(
-    (c) => c.risk_level?.toUpperCase() === "LOW"
-  ).length;
+        case "HIGH":
+          acc.high++;
+          break;
 
+        case "MEDIUM":
+          acc.medium++;
+          break;
+
+        case "LOW":
+          acc.low++;
+          break;
+
+        default:
+          break;
+      }
+
+      return acc;
+    },
+    {
+      critical: 0,
+      high: 0,
+      medium: 0,
+      low: 0,
+    }
+  );
+
+  const criticalRisks = riskCounts.critical;
+  const highRisks = riskCounts.high;
+  const medRisks = riskCounts.medium;
+  const lowRisks = riskCounts.low;
+
+  const totalRisky =
+    criticalRisks +
+    highRisks +
+    medRisks +
+    lowRisks;
   // Calculate overall risk score
   // If no risky clauses, score is 0. Otherwise average of criticality scores, or weighted
   let overallScore = 0;
@@ -78,16 +110,14 @@ export default function ContractSummary({
     riskRating = "Moderate Risk";
     ratingColor = "text-amber-400";
     ratingBg = "bg-amber-950/20 border-amber-900/40";
-  }
-
-  return (
+  }  return (
     <div className="space-y-6 select-none">
       {/* Glassmorphic Metadata Card */}
       <div className="rounded-2xl border border-slate-800/80 bg-gradient-to-br from-slate-900/60 to-slate-950/80 backdrop-blur-md p-6 shadow-xl relative overflow-hidden">
         {/* Subtle background glow */}
         <div className="absolute -right-24 -top-24 h-48 w-48 rounded-full bg-indigo-500/10 blur-3xl" />
         <div className="absolute -left-24 -bottom-24 h-48 w-48 rounded-full bg-emerald-500/5 blur-3xl" />
-        
+
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
           <div className="space-y-1 max-w-xs">
             <span className="text-[10px] font-extrabold uppercase tracking-widest text-indigo-400 bg-indigo-950/50 border border-indigo-900/50 px-2.5 py-1 rounded-full">
@@ -96,7 +126,7 @@ export default function ContractSummary({
             <h3 className="text-xl font-bold text-white mt-2">Parsed Entity Metadata</h3>
             <p className="text-xs text-slate-400">AI-extracted high-level parameters from document nodes.</p>
           </div>
-          
+
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 flex-grow">
             <div className="bg-slate-900/40 border border-slate-850 p-3.5 rounded-xl flex flex-col gap-1">
               <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Effective Date</span>
@@ -197,6 +227,10 @@ export default function ContractSummary({
             </div>
             <div className="mt-4 space-y-1">
               <div className="flex items-center justify-between text-xs">
+                <span className="text-red-600 font-semibold">Critical Risk</span>
+                <span className="text-white font-bold">{criticalRisks}</span>
+              </div>
+              <div className="flex items-center justify-between text-xs">
                 <span className="text-red-400 font-semibold">High Risk</span>
                 <span className="text-white font-bold">{highRisks}</span>
               </div>
@@ -237,10 +271,10 @@ export default function ContractSummary({
               safeGapAnalysis.map((gap, index) => {
                 const isHigh = gap.impact_severity?.toUpperCase() === "HIGH";
                 const isMed = gap.impact_severity?.toUpperCase() === "MEDIUM";
-                const badgeColor = isHigh 
-                  ? "text-red-400 bg-red-950/20 border-red-900/40" 
-                  : isMed 
-                    ? "text-amber-400 bg-amber-950/20 border-amber-900/40" 
+                const badgeColor = isHigh
+                  ? "text-red-400 bg-red-950/20 border-red-900/40"
+                  : isMed
+                    ? "text-amber-400 bg-amber-950/20 border-amber-900/40"
                     : "text-blue-400 bg-blue-950/20 border-blue-900/40";
 
                 return (

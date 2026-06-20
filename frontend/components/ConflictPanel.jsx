@@ -14,10 +14,9 @@ export default function ConflictPanel({ importantClauses = [] }) {
 
           // Unique key to prevent duplicates
           const betweenKey = [...(conflict.conflict_between || [])].sort().join("||");
-          const uniqueKey = `${betweenKey}||${conflict.simple_conflict_reason}`;
 
-          if (!seen.has(uniqueKey)) {
-            seen.add(uniqueKey);
+          if (betweenKey && !seen.has(betweenKey)) {
+            seen.add(betweenKey);
             
             // Extract Clause A and B
             const items = conflict.conflict_between || [];
