@@ -1,0 +1,122 @@
+{
+  "metadata": {
+    "effective_date": "Not Specified",
+    "duration": "1 Year (with a 2-year empanelment period)",
+    "first_party": "Indian Institute of Technology Kanpur (IITK)",
+    "second_party": "Not Specified",
+    "jurisdiction": "Kanpur Courts"
+  },
+  "gap_analysis": [
+    {
+      "title": "Confidentiality and Data Protection",
+      "impact_severity": "MEDIUM",
+      "reason_missing": "The contractor will have access to student names, project employee rosters, billing records, and campus entry details. The absence of a robust confidentiality clause allows the contractor to disclose or misuse this proprietary or personal information without contractual liability.",
+      "simple_explanation": "There are no rules stopping the contractor from sharing student lists, campus logistics, or financial data with outsiders. Adding this prevents leakages of private community information.",
+      "draft_text": "Each party shall maintain strict confidentiality regarding all personal data of students/residents and proprietary information of the Institute obtained during this contract. Neither party shall disclose such information to any third party without the prior written consent of the other party, except as required by law."
+    },
+    {
+      "title": "Limitation of Liability",
+      "impact_severity": "HIGH",
+      "reason_missing": "The contract contains several indemnities and liability transfers to the contractor (e.g., for labor compliance and safety losses) but lacks a mutual or unilateral liability cap. This subjects the contractor to unlimited risk, including indirect and consequential damages.",
+      "simple_explanation": "If something goes wrong, the contractor could face unlimited financial claims. Business standards require capping liability to a reasonable multiple of the contract value to manage commercial risk.",
+      "draft_text": "Except in cases of gross negligence, willful misconduct, or statutory labor violations, the total aggregate liability of either party under this Contract for any claims, losses, or damages shall be limited to the total service charges paid or payable to the Service Provider in the six (6) months preceding the event giving rise to liability."
+    },
+    {
+      "title": "Service Provider Right to Terminate for Convenience",
+      "impact_severity": "MEDIUM",
+      "reason_missing": "Under Clause 6.2, the Institute can terminate the contract for convenience with 30 days' notice. However, there is no corresponding right for the Service Provider, which traps them in an unviable contract if costs or operational conditions become unsustainable.",
+      "simple_explanation": "The Institute can end the contract anytime with 30 days' notice, but the service provider has no way to exit if they are losing money or cannot perform the services, unless the Institute agrees.",
+      "draft_text": "The Service Provider may terminate this Contract for convenience by giving at least ninety (90) days' prior written notice to the Institute, during which period the Service Provider shall continue to perform all services to prevent disruption to the residents."
+    }
+  ],
+  "important_clauses": [
+    {
+      "section_title": "7.14 Arbitration:",
+      "page": 27,
+      "risk_level": "HIGH",
+      "risk_type": "arbitration risks",
+      "criticality_score": 9,
+      "confidence": 95,
+      "legal_reason": "The clause provides for the unilateral appointment of a Sole Arbitrator by the Deputy Director of the Institute. Under Section 12(5) of the Indian Arbitration and Conciliation Act, 1996 (as amended) and established Supreme Court precedents (e.g., Perkins Eastman), unilateral appointment of a sole arbitrator by one interested party is legally invalid and void ab initio.",
+      "simple_reason": "The Institute gets to unilaterally choose the arbitrator (the judge) for any dispute, which is highly biased and legally unenforceable under Indian law.",
+      "recommendation": "Amend the clause to require that the Sole Arbitrator be appointed by mutual consent of both parties, or failing agreement, through the High Court.",
+      "highlighted_quotes": [
+        {
+          "quote": "Except as otherwise provided elsewhere in the contract, if any dispute, difference, question or disagreement or matter whatsoever, shall, before/after completion or abandonment of work or during extended period, hereafter arises between the parties, as to the meaning, operation or effect of the contract or out of or relating to the contract or breach thereof, shall be referred to a Sole Arbitrator to be appointed by the Deputy Director of the Institute at the time of the dispute.",
+          "page": 27
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "6.1 Security Deposit:",
+      "page": 17,
+      "risk_level": "HIGH",
+      "risk_type": "security deposit deductions",
+      "criticality_score": 8,
+      "confidence": 90,
+      "legal_reason": "Giving the Institute an 'unqualified option to forfeit' the entire Rs. 5,00,000/- security deposit for any commitment failure represents an unenforceable penalty clause under Section 74 of the Indian Contract Act, 1872. Forfeiture must be a genuine pre-estimate of loss, and arbitrary complete forfeiture without proof of actual loss is legally invalid.",
+      "simple_reason": "The Institute can keep your entire 5 Lakhs deposit for any minor violation, even if they did not lose any money from your mistake.",
+      "recommendation": "Negotiate to modify the clause so that forfeiture is limited to actual proven financial losses or damages suffered by the Institute due to a material breach.",
+      "highlighted_quotes": [
+        {
+          "quote": "The Institute shall have an unqualified option to forfeit the same if the service provider fails to honour any of its commitments under the contract and/or in respect of any amount due from the service provider to the Institute.",
+          "page": 17
+        }
+      ],
+      "cross_clause_conflicts": [
+        {
+          "conflict_between": [
+            "6.1 Security Deposit",
+            "6.5.12 Interpretation of Contract Documents"
+          ],
+          "simple_conflict_reason": "Clause 6.1 states that the Security Deposit will be refunded 60 days after the contract is over or within 15 days from the issue of a 'No Dues Certificate' from the Warden. However, Clause 6.5.12 states the refund will happen after the expiry of a 'defect liability period of 2 months' or within 15 days of a 'No Dues Certificate' from the HEC (not the Warden), whichever is later. This creates severe procedural confusion regarding whose certificate is required and when the money is actually returned."
+        }
+      ]
+    },
+    {
+      "section_title": "4.0 Employment of workmen by the Service provider",
+      "page": 12,
+      "risk_level": "MEDIUM",
+      "risk_type": "unilateral authority clauses",
+      "criticality_score": 7,
+      "confidence": 88,
+      "legal_reason": "The clause grants the Warden-in-charge/Warden the right to demand the removal of any employee 'without questioning the decision of the Institute'. This completely bypasses the contractor's role as the legal employer, exposes them to constructive dismissal claims, and compromises their compliance with the Industrial Employment (Standing Orders) Act, 1946.",
+      "simple_reason": "The Institute can force you to fire or remove any worker immediately without giving any reason or proof, leaving you vulnerable to wrongful termination lawsuits by that worker.",
+      "recommendation": "Amend this clause to require the Institute to provide written reasons and a brief notice period for investigation before requesting an employee's removal, except in cases of extreme misconduct.",
+      "highlighted_quotes": [
+        {
+          "quote": "If in the opinion of the Institute any of the service provider's employee [s] is found to be suffering from any such disease/condition or if any employee(s) of the service provider is found to have committed misconduct or misbehavior, the Warden-in-charge/Warden shall have the right to ask the service provider to remove such employee(s) without questioning the decision of the Institute.",
+          "page": 12
+        }
+      ],
+      "cross_clause_conflicts": [
+        {
+          "conflict_between": [
+            "4.3 Employment of workmen",
+            "7.0.1 Service provider's Subordinate Staff"
+          ],
+          "simple_conflict_reason": "Clause 4.3 mandates that medical examinations are conducted by 'Medical Officers specified by the Warden-in-charge/Warden'. However, Clause 7.0.1 places the burden on the Service Provider to independently procure and submit a medical fitness certificate to the Warden. This creates a conflict regarding who is responsible for administering the physical exams and selecting the medical authority."
+        }
+      ]
+    },
+    {
+      "section_title": "6.5 Interpretation of Contract Documents :",
+      "page": 19,
+      "risk_level": "MEDIUM",
+      "risk_type": "scope creep risks",
+      "criticality_score": 6,
+      "confidence": 85,
+      "legal_reason": "By declaring that the Warden's interpretation of discrepancies, omissions, or errors is 'final and conclusive', this clause prevents the contractor from raising disputes under the arbitration framework for arbitrary additions to their scope of work, effectively overriding the bilateral nature of the contract.",
+      "simple_reason": "If there is a mistake or disagreement in the written contract, the Warden's decision on what it means is absolute and cannot be challenged, allowing them to force extra work on you.",
+      "recommendation": "Modify the clause to state that in case of any discrepancy or inconsistency, the parties will mutually discuss and agree in writing, and any unresolved disputes will be subject to the formal dispute resolution mechanism.",
+      "highlighted_quotes": [
+        {
+          "quote": "Several documents forming the contract are to be taken as mutually explanatory. Should there be any discrepancy, inconsistency, error or commission in the contract, the matter may be referred to the Warden in-charge/Warden who shall give his decision and issue to the service provider instructions directing in what manner the work is to be carried out. The decision of the Warden in-charge/Warden shall be final and conclusive and the service provider shall carry out work in accordance with this decision.",
+          "page": 19
+        }
+      ],
+      "cross_clause_conflicts": []
+    }
+  ]
+}

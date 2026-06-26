@@ -1,0 +1,212 @@
+{
+  "metadata": {
+    "effective_date": "Not Specified",
+    "duration": "1 Year (extendable on mutual consent; Empanelment is for 2 Years)",
+    "first_party": "Indian Institute of Technology Kanpur (IITK)",
+    "second_party": "Not Specified",
+    "jurisdiction": "Kanpur Courts"
+  },
+  "gap_analysis": [
+    {
+      "title": "Limitation of Liability",
+      "impact_severity": "HIGH",
+      "reason_missing": "The contract contains several indemnification and loss recovery provisions (e.g., Clauses 4.5 and 4.8) that place unlimited financial liability on the service provider. Without a reciprocal or overall liability cap, the service provider faces catastrophic financial exposure that could threaten its business survival over minor or unintended breaches.",
+      "simple_explanation": "There is no cap on the total amount of money the service provider might have to pay the Institute if something goes wrong. Standard commercial contracts usually limit this liability to a percentage of the contract value to keep risks manageable.",
+      "draft_text": "Limitation of Liability: Except in cases of gross negligence, willful misconduct, or statutory non-compliance, the aggregate liability of either party to the other for all claims, losses, or damages arising under or in connection with this Contract shall be strictly limited to the total service charges paid or payable to the Service Provider under this Contract in the twelve (12) months preceding the event giving rise to such liability."
+    },
+    {
+      "title": "Data Privacy and Confidentiality",
+      "impact_severity": "MEDIUM",
+      "reason_missing": "Under Clause 7.0.2, the service provider must submit workers' personal data (addresses, photographs, contact details) to the Warden. Without a formal data privacy/confidentiality clause, the contract does not comply with India's Digital Personal Data Protection (DPDP) Act, 2023, exposing both parties to regulatory penalties and potential data misuse liabilities.",
+      "simple_explanation": "The contract requires the service provider to hand over workers' personal details, pictures, and addresses. However, it lacks rules on how this personal information should be secured, processed, or deleted, which is risky and violates modern Indian data privacy laws.",
+      "draft_text": "Confidentiality and Data Protection: Both parties agree to maintain the confidentiality of all proprietary and personal data obtained during this Contract. The Institute and the Service Provider shall strictly comply with the Digital Personal Data Protection Act, 2023. Personal data of employees submitted under Clause 7.0.2 shall be processed solely for security verification and contract performance, stored securely, and destroyed upon contract termination."
+    },
+    {
+      "title": "Amicable Resolution / Mediation Prior to Arbitration",
+      "impact_severity": "MEDIUM",
+      "reason_missing": "Clause 7.14 jumps directly from a dispute to a binding, sole-arbitrator arbitration process without a mandatory intermediary step of escalation or mediation. This often results in accelerated legal friction and high dispute-resolution costs that could have been resolved through formal non-binding mediation.",
+      "simple_explanation": "The contract forces parties to go straight to expensive arbitration if they have any disagreement. It is safer and cheaper to require a formal 'cool-down' period and mediation first, so they can try to settle issues amicably.",
+      "draft_text": "Dispute Escalation and Mediation: In the event of any dispute or difference arising out of or relating to this Contract, senior representatives of both parties shall meet within fifteen (15) days of a written request to negotiate in good faith. If the dispute is not resolved through negotiation, the parties shall refer the matter to mediation under the rules of an established mediation center in Kanpur before resorting to arbitration."
+    }
+  ],
+  "important_clauses": [
+    {
+      "section_title": "6.2 Termination",
+      "page": 17,
+      "risk_level": "HIGH",
+      "risk_type": "Unilateral Termination",
+      "criticality_score": 88,
+      "confidence": 95,
+      "legal_reason": "This clause allows the Institute to terminate the contract at any time for any reason 'without assigning any reasons thereof' with a 30-day notice. Crucially, it also allows the Institute to unilaterally reduce this 30-day period under 'exceptional circumstances' without defining what constitutes such circumstances, creating extreme business uncertainty for the service provider.",
+      "simple_reason": "The Institute can fire the service provider and kick them out of the premises on a whim without giving a reason, and they can even cut down the 30-day notice period to whatever they want if they declare there is an 'exceptional circumstance'.",
+      "recommendation": "Negotiate to remove the right to terminate 'without assigning reasons' or make it mutual. At a minimum, ensure the 'exceptional circumstances' that allow reducing the notice period are explicitly defined (such as serious safety violations or illegal acts) and have a hard floor of at least 7 days.",
+      "highlighted_quotes": [
+        {
+          "quote": "A notice in writing from the Institute to the service provider shall be issued giving 30 (Thirty) days time for such termination and vacation of the premises, without assigning any reasons thereof. Under exceptional circumstances this 30 day period may be appropriately reduced.",
+          "page": 17
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "7.14 Arbitration",
+      "page": 27,
+      "risk_level": "HIGH",
+      "risk_type": "Arbitration Risk",
+      "criticality_score": 92,
+      "confidence": 98,
+      "legal_reason": "The clause provides that the Sole Arbitrator will be unilaterally appointed by the Deputy Director of the Institute. Under prevailing Indian arbitration law (established by Supreme Court judgments like Perkins Eastman and TRF Ltd.), a unilateral right given to one party to appoint a sole arbitrator is legally invalid and unenforceable, as it violates the requirements of impartiality and independent adjudication.",
+      "simple_reason": "If there is a dispute, the arbitrator who will act as the judge is chosen entirely by the Deputy Director of the Institute. Under Indian law, this unilateral setup is highly biased and unenforceable.",
+      "recommendation": "Amend the arbitration clause to provide for a mutually agreed arbitrator, or state that the sole arbitrator shall be appointed in accordance with the rules of a recognized arbitral institution or through the High Court.",
+      "highlighted_quotes": [
+        {
+          "quote": "Except as otherwise provided elsewhere in the contract, if any dispute, difference, question or disagreement or matter whatsoever, shall, before/after completion or abandonment of work or during extended period, hereafter arises between the parties, as to the meaning, operation or effect of the contract or out of or relating to the contract or breach thereof, shall be referred to a Sole Arbitrator to be appointed by the Deputy Director of the Institute at the time of the dispute.",
+          "page": 27
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "4.0 Employment of workmen by the Service provider",
+      "page": 12,
+      "risk_level": "HIGH",
+      "risk_type": "Payment / Forfeiture Risk",
+      "criticality_score": 84,
+      "confidence": 95,
+      "legal_reason": "Clause 4.5 gives the Institute the sole discretion to determine the quantum of losses suffered due to security or safety violations and allows them to immediately deduct these losses from dues or the security deposit. This bypasses any neutral adjudication, joint loss adjustment, or proof requirement.",
+      "simple_reason": "If the Institute decides that the service provider broke a safety rule, the Institute alone gets to decide how much money it lost, and can immediately deduct that money from the service provider's pay or security deposit without any process.",
+      "recommendation": "Propose that any determination of loss must be mutually evaluated or supported by documentary evidence and written notice. Introduce a 14-day cure period for the service provider to remedy security/safety issues before unilateral financial deductions are made.",
+      "highlighted_quotes": [
+        {
+          "quote": "In case, the Institute suffers loss of any nature on account of the service provider or his employees for not following security/safety regulation/instructions, the service provider shall be liable to make good the loss as determined by the Institute at its sole discretion and the Institute shall have the right to recover such losses, etc., from the dues payable to the service provider and/or security deposit, etc.",
+          "page": 12
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "6.1 Security Deposit",
+      "page": 17,
+      "risk_level": "MEDIUM",
+      "risk_type": "Contradictory Obligations",
+      "criticality_score": 70,
+      "confidence": 90,
+      "legal_reason": "There is a direct structural conflict between the security deposit refund timeline in Clause 6.1 and Clause 6.5.12. Clause 6.1 states that the deposit shall be refunded 60 days after the expiry of the contract or within 15 days of a No Dues Certificate from the 'Warden in-charge/Warden'. Meanwhile, Clause 6.5.12 references a 'defect liability period of 2 months' and states the No Dues Certificate comes from the 'HEC' (Hostel Executive Committee), applying a 'whichever is later' standard. This creates operational confusion over who issues the certificate and the precise refund timeline.",
+      "simple_reason": "Two parts of the contract disagree on who must issue the 'No Dues Certificate' (the Warden vs. the student HEC) and the exact time frame for getting back the five lakh rupee security deposit.",
+      "recommendation": "Harmonize the clauses. Consolidate them into a single, clear security deposit refund process stating that the refund will be made within 30 days of contract expiration, subject to a single No Dues Certificate issued jointly or solely by the Warden in-charge.",
+      "highlighted_quotes": [
+        {
+          "quote": "The Security Deposit shall be refunded to the service provider without any interest 60 (sixty) days after the expiry of the contract or within 15 (fifteen) days from the date of the issue of a “No Dues Certificate” from the Warden in-charge/Warden subject to the fulfillment of all contractual obligations by the service provider.",
+          "page": 17
+        }
+      ],
+      "cross_clause_conflicts": [
+        {
+          "conflict_between": [
+            "6.1 Security Deposit",
+            "6.5 Interpretation of Contract Documents (Clause 6.5.12)"
+          ],
+          "simple_conflict_reason": "Clause 6.1 requires a No Dues Certificate from the 'Warden in-charge/Warden' and triggers the refund 60 days after contract expiry or within 15 days of the certificate. Clause 6.5.12 introduces a 2-month defect liability period and requires the No Dues Certificate to come from the 'HEC' (Hostel Executive Committee), making the refund occur on 'whichever is later'."
+        }
+      ]
+    }
+  ],
+  "total_sections": 37,
+  "placeholders": [
+    {
+      "placeholder": "__________",
+      "page": 1,
+      "context": "... AND M/s __________ registered under ________________________ and having it’s office at __________________________________________________ (hereinafter referred to as ..."
+    },
+    {
+      "placeholder": "__________________________________________________",
+      "page": 1,
+      "context": "... AND M/s __________ registered under ________________________ and having it’s office at __________________________________________________ (hereinafter referred to as The Service Provider which expression shall include his/their respective heirs, executors, ..."
+    },
+    {
+      "placeholder": "_____________________________",
+      "page": 1,
+      "context": "... The Service Provider which expression shall include his/their respective heirs, executors, administrators and assignees), represented by _____________________________ on the other part. ..."
+    },
+    {
+      "placeholder": "__________",
+      "page": 2,
+      "context": "... the General Conditions of the Contract. AND whereas the Service Provider has deposited a sum of Rs. __________ (___ lakhs only) as earnest money in the form of a Demand Draft No. ________ dated _______ issued by ..."
+    },
+    {
+      "placeholder": "________",
+      "page": 2,
+      "context": "... AND whereas the Service Provider has deposited a sum of Rs. __________ (___ lakhs only) as earnest money in the form of a Demand Draft No. ________ dated _______ issued by ___________________ in favour of Hall Management, IIT Kanpur payable at UBI, I.I.T. ..."
+    },
+    {
+      "placeholder": "___________________",
+      "page": 2,
+      "context": "... as earnest money in the form of a Demand Draft No. ________ dated _______ issued by ___________________ in favour of Hall Management, IIT Kanpur payable at UBI, I.I.T. Branch Kanpur as performance guarantee for the said work and has agreed that this be ..."
+    },
+    {
+      "placeholder": "__________",
+      "page": 2,
+      "context": "... AND whereas the Service Provider has promised to deposit Rs. __________ (_____ lakhs only) as remaining part of the security deposit in the form of a Bank Draft latest by ..."
+    },
+    {
+      "placeholder": "__________",
+      "page": 2,
+      "context": "... only) as remaining part of the security deposit in the form of a Bank Draft latest by __________ ..."
+    },
+    {
+      "placeholder": "____________________",
+      "page": 3,
+      "context": "... __________________________ M/s ____________________ _______________________ ..."
+    },
+    {
+      "placeholder": "_____________________________",
+      "page": 3,
+      "context": "... 1_____________________________ ..."
+    },
+    {
+      "placeholder": "______________________",
+      "page": 3,
+      "context": "... 2. ______________________ ..."
+    },
+    {
+      "placeholder": "____",
+      "page": 6,
+      "context": "... 2.1 The Hall of Residence No.-__ is a ____s’ Hostel situated inside the campus of the Institute with an exclusive and fully secured premise of its own. The ..."
+    },
+    {
+      "placeholder": "___",
+      "page": 6,
+      "context": "... residents with a centrally located dining facility, administrative block, coffee shop, etc. The hostel is designed to accommodate a total of ___ students approximately with a minor variation. ..."
+    },
+    {
+      "placeholder": "________________________________",
+      "page": 8,
+      "context": "... keep the actual cost of the raw material including cooking fuel within a value of Rupees ________________________________ only (Rs. ______) per student per day. This value should not go up by more than Rs. 3/- for a period of one ..."
+    },
+    {
+      "placeholder": "[s]",
+      "page": 12,
+      "context": "... provider. If in the opinion of the Institute any of the service provider's employee [s] is found to be suffering from any such disease/condition or if any employee(s) of the service provider is found to have committed ..."
+    },
+    {
+      "placeholder": "__________",
+      "page": 15,
+      "context": "... The charges for providing operational services in the mess of Hall-__ shall be Rs. __________ (rupees __________________________only) per month ..."
+    },
+    {
+      "placeholder": "[ten]",
+      "page": 15,
+      "context": "... bills shall normally be for purchase of preceding two weeks. The Warden in- charge/Warden shall make efforts that the bills are paid within 10 [ten] working days of submission. The institute shall not be responsible for any ..."
+    },
+    {
+      "placeholder": "_________",
+      "page": 16,
+      "context": "... defined for purpose of Article 3.5, plus fixed cost, suitably rounded. This fixed cost shall be calculated by dividing Rs. _________/- by thirty times the number of students i.e. Rs. _________÷(number of students)X30. The coupon ..."
+    },
+    {
+      "placeholder": "_________",
+      "page": 16,
+      "context": "... fixed cost shall be calculated by dividing Rs. _________/- by thirty times the number of students i.e. Rs. _________÷(number of students)X30. The coupon cost may be modified from time to time by the institute. The service provider ..."
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "important_clauses": [],
+  "total_sections": 37,
+  "gap_analysis": [
+    {
+      "title": "Intellectual Property Rights",
+      "impact_severity": "MEDIUM",
+      "reason_missing": "The absence of an Intellectual Property Rights clause leaves critical ambiguities regarding the ownership, use, and licensing of any materials, software, methodologies, recipes, or other proprietary information developed or utilized during the provision of operational services. This exposes both the Institute and the Service Provider to potential disputes over rights, infringement claims, and loss of valuable assets post-termination.",
+      "simple_explanation": "This clause clarifies who owns any unique recipes, operational manuals, software, or other creative works developed or used while providing the services. Without it, there could be arguments about who gets to use or keep these valuable assets if the contract ends, potentially leading to legal issues or loss of your unique methods.",
+      "draft_text": "3.1 All intellectual property rights (including, but not limited to, copyrights, trade secrets, and know-how) in any deliverables, specific operational manuals, training materials, or unique recipes developed by the Service Provider specifically for the Institute in the performance of the Work shall become the sole property of the Institute upon creation and full payment. The Service Provider shall assist the Institute in perfecting such ownership, if required.\n\n3.2 Any intellectual property owned by either the Institute or the Service Provider prior to the commencement of this Contract, or developed independently by either party outside the scope of this Contract, shall remain the exclusive property of that party. Each party grants the other a limited, non-exclusive, non-transferable, royalty-free license to use such pre-existing intellectual property solely to the extent necessary to perform its obligations under this Contract.\n\n3.3 The Service Provider warrants that its performance of the Work and any materials provided will not infringe upon the intellectual property rights of any third party."
+    },
+    {
+      "title": "Data Privacy & Confidentiality",
+      "impact_severity": "HIGH",
+      "reason_missing": "The complete absence of clauses addressing data privacy and confidentiality creates significant legal and operational risks. Given the Service Provider will handle personal information of students, staff, and potentially other authorized persons (e.g., dietary needs, attendance, payment info), there is no framework for protecting this data, ensuring compliance with relevant data protection regulations, or safeguarding sensitive operational information. This exposes the Institute to potential data breaches, legal penalties, and reputational damage.",
+      "simple_explanation": "This clause ensures that any private information about students, staff, or the Institute's operations (like dietary needs, payment details, or specific procedures) is kept secret and handled safely. Without it, there's no protection against this information being misused or exposed, which could cause big problems, legal penalties, and harm the Institute's reputation.",
+      "draft_text": "4.1 Both parties agree to treat all information disclosed by the other party as confidential, including, but not limited to, student records, operational procedures, financial data, and trade secrets. Neither party shall, without the prior written consent of the other, disclose any such confidential information to any third party or use it for any purpose other than for the performance of this Contract.\n\n4.2 The Service Provider shall implement and maintain appropriate technical and organizational measures to protect personal data (as defined by applicable data protection laws) of students, staff, and other individuals encountered or processed during the performance of the Work, against unauthorized or unlawful processing and against accidental loss, destruction, or damage. The Service Provider shall comply with all applicable data protection and privacy laws and regulations in its handling of such data.\n\n4.3 The Service Provider shall promptly notify the Institute of any actual or suspected data breach or unauthorized access to confidential information or personal data."
+    },
+    {
+      "title": "Termination for Convenience",
+      "impact_severity": "HIGH",
+      "reason_missing": "The complete absence of a termination for convenience clause leaves both parties without a clear mechanism to end the contract amicably and without cause. This creates significant inflexibility, as the parties may be legally bound to continue the agreement even if circumstances change or the relationship becomes unviable, absent a material breach. Such an omission can lead to costly disputes and protracted legal processes if a party wishes to exit the agreement prematurely.",
+      "simple_explanation": "This clause allows either party to end the contract even if there isn't a specific problem or breach, usually by giving advance notice. If it's missing, both sides are essentially locked into the contract unless one side significantly breaks the agreement, making it difficult to end the relationship smoothly if circumstances change or the service is no longer needed.",
+      "draft_text": "5.1 Either party may terminate this Contract for convenience by providing sixty (60) days' prior written notice to the other party.\n\n5.2 Upon receipt of such notice, the Service Provider shall cease all Work, take all necessary steps to minimize costs, and cooperate with the Institute in an orderly transition of services. The Institute shall pay the Service Provider for all services rendered and expenses incurred up to the effective date of termination, in accordance with the Contract's payment terms, and shall be responsible for any reasonable demobilization costs incurred by the Service Provider as a direct result of such termination for convenience."
+    },
+    {
+      "title": "Dispute Resolution and Escalation",
+      "impact_severity": "HIGH",
+      "reason_missing": "The absence of a dispute escalation and resolution clause means there is no defined process for addressing disagreements between the parties. This omission can lead to protracted and expensive legal battles (arbitration or litigation) for even minor disputes, as there are no mandated steps for negotiation, mediation, or structured escalation to resolve issues amicably before resorting to formal legal proceedings, thereby increasing costs and damaging relationships.",
+      "simple_explanation": "This clause outlines a step-by-step process for resolving disagreements, starting with direct discussions, then potentially involving a neutral third party (mediation) before moving to more formal and costly methods like arbitration. Without it, any argument could immediately escalate to an expensive legal battle without attempting to resolve it amicably first.",
+      "draft_text": "6.1 In the event of any dispute, controversy, or claim arising out of or relating to this Contract, or the breach, termination, or invalidity thereof, the parties shall first attempt to resolve the matter through good faith negotiations between the designated representatives of each party.\n\n6.2 If the dispute cannot be resolved through negotiation within thirty (30) days from the date one party notifies the other of the dispute, either party may request that the matter be submitted to non-binding mediation. The parties shall mutually agree on a mediator, and the costs of mediation shall be shared equally.\n\n6.3 If the dispute remains unresolved after sixty (60) days from the commencement of mediation, or if either party declines mediation, the dispute shall be finally settled by arbitration in accordance with the provisions of the Arbitration and Conciliation Act, 1996 (or any statutory modification or re-enactment thereof) in India. The seat and venue of arbitration shall be Kanpur, Uttar Pradesh, India, and the language of the arbitration shall be English. The arbitral award shall be final and binding on both parties."
+    },
+    {
+      "title": "Subcontracting",
+      "impact_severity": "HIGH",
+      "reason_missing": "The absence of specific clauses regarding subcontracting allows the Service Provider to freely delegate its obligations to third parties without the Institute's knowledge or consent. This poses significant risks, including potential compromises in service quality, security, accountability, and compliance with operational standards, as the Institute loses direct control and oversight over who is performing critical services within its premises, potentially impacting the safety and well-being of residents.",
+      "simple_explanation": "This clause explains whether the main service provider can hire other companies or individuals (subcontractors) to do parts of the work, and if so, under what rules (e.g., needing approval). If it's missing, the main service provider could hand off important tasks without the Institute knowing or agreeing, which could affect the quality, safety, and accountability of the services provided in the mess.",
+      "draft_text": "7.1 The Service Provider shall not subcontract, assign, or otherwise transfer any of its rights or obligations under this Contract, in whole or in part, without the prior written consent of the Institute.\n\n7.2 If the Institute grants consent for subcontracting, the Service Provider shall remain fully responsible for the performance of the Work by its subcontractors and for their compliance with all terms and conditions of this Contract. The Service Provider shall ensure that all subcontractors adhere to the same standards and obligations as are applicable to the Service Provider under this Contract, including but not limited to, compliance with safety, security, confidentiality, and quality standards.\n\n7.3 Any consent granted by the Institute to subcontract shall not relieve the Service Provider of its obligations or liabilities under this Contract."
+    }
+  ],
+  "metadata": {
+    "effective_date": "Not Specified",
+    "duration": "2 Years",
+    "first_party": "Indian Institute of Technology Kanpur (IITK)",
+    "second_party": "Service provider",
+    "jurisdiction": "Not Specified"
+  },
+  "placeholders": [
+    {
+      "placeholder": "__________",
+      "page": 1,
+      "context": "... AND M/s __________ registered under ________________________ and having it’s office at __________________________________________________ (hereinafter referred to as ..."
+    },
+    {
+      "placeholder": "__________________________________________________",
+      "page": 1,
+      "context": "... AND M/s __________ registered under ________________________ and having it’s office at __________________________________________________ (hereinafter referred to as The Service Provider which expression shall include his/their respective heirs, executors, ..."
+    },
+    {
+      "placeholder": "_____________________________",
+      "page": 1,
+      "context": "... The Service Provider which expression shall include his/their respective heirs, executors, administrators and assignees), represented by _____________________________ on the other part. ..."
+    },
+    {
+      "placeholder": "__________",
+      "page": 2,
+      "context": "... the General Conditions of the Contract. AND whereas the Service Provider has deposited a sum of Rs. __________ (___ lakhs only) as earnest money in the form of a Demand Draft No. ________ dated _______ issued by ..."
+    },
+    {
+      "placeholder": "________",
+      "page": 2,
+      "context": "... AND whereas the Service Provider has deposited a sum of Rs. __________ (___ lakhs only) as earnest money in the form of a Demand Draft No. ________ dated _______ issued by ___________________ in favour of Hall Management, IIT Kanpur payable at UBI, I.I.T. ..."
+    },
+    {
+      "placeholder": "___________________",
+      "page": 2,
+      "context": "... as earnest money in the form of a Demand Draft No. ________ dated _______ issued by ___________________ in favour of Hall Management, IIT Kanpur payable at UBI, I.I.T. Branch Kanpur as performance guarantee for the said work and has agreed that this be ..."
+    },
+    {
+      "placeholder": "__________",
+      "page": 2,
+      "context": "... AND whereas the Service Provider has promised to deposit Rs. __________ (_____ lakhs only) as remaining part of the security deposit in the form of a Bank Draft latest by ..."
+    },
+    {
+      "placeholder": "__________",
+      "page": 2,
+      "context": "... only) as remaining part of the security deposit in the form of a Bank Draft latest by __________ ..."
+    },
+    {
+      "placeholder": "____________________",
+      "page": 3,
+      "context": "... __________________________ M/s ____________________ _______________________ ..."
+    },
+    {
+      "placeholder": "_____________________________",
+      "page": 3,
+      "context": "... 1_____________________________ ..."
+    },
+    {
+      "placeholder": "______________________",
+      "page": 3,
+      "context": "... 2. ______________________ ..."
+    },
+    {
+      "placeholder": "____",
+      "page": 6,
+      "context": "... 2.1 The Hall of Residence No.-__ is a ____s’ Hostel situated inside the campus of the Institute with an exclusive and fully secured premise of its own. The ..."
+    },
+    {
+      "placeholder": "___",
+      "page": 6,
+      "context": "... residents with a centrally located dining facility, administrative block, coffee shop, etc. The hostel is designed to accommodate a total of ___ students approximately with a minor variation. ..."
+    },
+    {
+      "placeholder": "________________________________",
+      "page": 8,
+      "context": "... keep the actual cost of the raw material including cooking fuel within a value of Rupees ________________________________ only (Rs. ______) per student per day. This value should not go up by more than Rs. 3/- for a period of one ..."
+    },
+    {
+      "placeholder": "[s]",
+      "page": 12,
+      "context": "... provider. If in the opinion of the Institute any of the service provider's employee [s] is found to be suffering from any such disease/condition or if any employee(s) of the service provider is found to have committed ..."
+    },
+    {
+      "placeholder": "__________",
+      "page": 15,
+      "context": "... The charges for providing operational services in the mess of Hall-__ shall be Rs. __________ (rupees __________________________only) per month ..."
+    },
+    {
+      "placeholder": "[ten]",
+      "page": 15,
+      "context": "... bills shall normally be for purchase of preceding two weeks. The Warden in- charge/Warden shall make efforts that the bills are paid within 10 [ten] working days of submission. The institute shall not be responsible for any ..."
+    },
+    {
+      "placeholder": "_________",
+      "page": 16,
+      "context": "... defined for purpose of Article 3.5, plus fixed cost, suitably rounded. This fixed cost shall be calculated by dividing Rs. _________/- by thirty times the number of students i.e. Rs. _________÷(number of students)X30. The coupon ..."
+    },
+    {
+      "placeholder": "_________",
+      "page": 16,
+      "context": "... fixed cost shall be calculated by dividing Rs. _________/- by thirty times the number of students i.e. Rs. _________÷(number of students)X30. The coupon cost may be modified from time to time by the institute. The service provider ..."
+    }
+  ]
+}

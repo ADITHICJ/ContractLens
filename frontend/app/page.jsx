@@ -6,21 +6,41 @@ import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import UploadZone from "../components/UploadZone";
 import LoadingOverlay from "../components/LoadingOverlay";
-import { useUpload } from "../hooks/useUpload";
-import { ShieldAlert, BookOpen, Scale, Landmark } from "lucide-react";
+import { uploadContract, analyzeContract } from "../lib/api";
+import { 
+  ShieldAlert, 
+  BookOpen, 
+  Scale, 
+  Landmark, 
+  AlertCircle
+} from "lucide-react";
 
 export default function Home() {
   const router = useRouter();
-  const uploadMutation = useUpload();
+  
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [analysisError, setAnalysisError] = useState(null);
 
-  const handleUpload = (file) => {
-    uploadMutation.mutate(file, {
-      onSuccess: (data) => {
-        if (data.documentId) {
-          router.push(`/dashboard/${data.documentId}`);
-        }
-      },
-    });
+  const handleUpload = async (file) => {
+    setIsProcessing(true);
+    setAnalysisError(null);
+    try {
+      // Step 1: Upload and get structural tree reference
+      const data = await uploadContract(file);
+      if (!data.documentId) {
+        throw new Error("Invalid response from parse server.");
+      }
+
+      // Step 2: Run Gemini legal analyzer immediately
+      await analyzeContract(data.documentId);
+
+      // Step 3: Redirect directly to the dashboard page once data is fully available
+      router.push(`/dashboard/${data.documentId}`);
+    } catch (err) {
+      console.error(err);
+      setAnalysisError(err.message || "Failed to analyze contract. Please verify backend is active.");
+      setIsProcessing(false);
+    }
   };
 
   return (
@@ -31,10 +51,22 @@ export default function Home() {
         <HeroSection />
         
         {/* Upload Contract */}
-        <UploadZone onUpload={handleUpload} isLoading={uploadMutation.isPending} />
+        <UploadZone onUpload={handleUpload} isLoading={isProcessing} />
+
+        {analysisError && (
+          <div className="mx-auto max-w-2xl px-4 mt-6">
+            <div className="flex items-start gap-2.5 text-sm text-red-400 bg-red-950/30 border border-red-900/40 p-4 rounded-xl">
+              <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
+              <div>
+                <span className="font-bold">Processing Failed:</span>
+                <p className="mt-1">{analysisError}</p>
+              </div>
+            </div>
+          </div>
+        )}
         
         {/* Loading Overlay */}
-        <LoadingOverlay isVisible={uploadMutation.isPending} />
+        <LoadingOverlay isVisible={isProcessing} />
 
         {/* Feature Cards Section */}
         <section id="features" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-24">

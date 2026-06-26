@@ -1,0 +1,530 @@
+{
+  "important_clauses": [
+    {
+      "section_title": "4.0 Employment of workmen by the Service provider",
+      "page": 12,
+      "risk_level": "High",
+      "risk_type": "Liability transfer, Unilateral authority clauses, Compliance obligations, Indemnity clauses, Financial penalties, Security deposit deductions, Unilateral termination",
+      "criticality_score": 9,
+      "confidence": 10,
+      "legal_reason": "These clauses impose broad liability on the Service Provider for employee conduct, statutory compliance, and associated costs. The Institute reserves unilateral authority to remove Service Provider's employees without justification, determine losses at its sole discretion, recover these from the Service Provider's dues/security deposit, and claim indemnity for any labour law violations. The requirement for a waiver of subrogation further insulates the Institute from claims, effectively shifting all related risks and costs to the Service Provider, including the severe penalty of immediate termination for non-compliance with statutory provisions.",
+      "simple_reason": "The Institute can force the Service Provider to remove employees, decide how much the Service Provider owes for staff-related issues, and take money from the Service Provider's payments or deposit. The Service Provider must pay for all staff compliance, insurance, and cover any legal costs for the Institute related to staff, or face termination. This means the Service Provider carries all the risks and costs for its employees, even if the Institute makes the decisions.",
+      "recommendation": "Negotiate limits on the Institute's unilateral right to remove employees, requiring objective reasons and a clear process. Define 'loss' and the determination process in 4.5 to prevent arbitrary decisions. Cap potential recoveries and ensure a fair dispute mechanism before deductions. Clarify the scope of indemnity and explore options to limit the Service Provider's exposure to unlimited liability for all statutory provisions. Review the waiver of subrogation in 4.10 with an insurance advisor to understand full implications and ensure adequate coverage.",
+      "highlighted_quotes": [
+        {
+          "quote": "If in the opinion of the Institute any of the service provider's employee [s] is found to be suffering from any such disease/condition or if any employee(s) of the service provider is found to have committed misconduct or misbehavior, the Warden-in-charge/Warden shall have the right to ask the service provider to remove such employee(s) without questioning the decision of the Institute.",
+          "page": 12
+        },
+        {
+          "quote": "In case, the Institute suffers loss of any nature on account of the service provider or his employees for not following security/safety regulation/instructions, the service provider shall be liable to make good the loss as determined by the Institute at its sole discretion and the Institute shall have the right to recover such losses, etc., from the dues payable to the service provider and/or security deposit, etc.",
+          "page": 12
+        },
+        {
+          "quote": "The Institute shall be indemnified for any action brought against it for any violation/non-compliance of any of the provisions of any of the acts, etc. hence non compliance or violation of any of these provisions of any of the Acts would lead to the immediate termination of the contract.",
+          "page": 13
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "6.5 Interpretation of Contract Documents :",
+      "page": 19,
+      "risk_level": "High",
+      "risk_type": "Unilateral authority clauses, Scope creep risks, Liability transfer, Dispute restrictions, Binding obligations",
+      "criticality_score": 9,
+      "confidence": 10,
+      "legal_reason": "These clauses grant the Institute's Warden final and conclusive authority on interpreting contract discrepancies, creating a significant power imbalance. The Service Provider is deemed to have full knowledge of all requirements, irrespective of potential errors or omissions in the contract documents, and bears all risks and liabilities for completing the work at the scheduled rates. The 'broadly defined' Scope of Work, coupled with the Warden's authority to finalize 'finer details', creates a substantial risk of scope creep and uncompensated work, placing an undue burden of due diligence and unforeseen costs entirely on the Service Provider.",
+      "simple_reason": "The Institute's Warden can make the final decision on what the contract means, even if there are mistakes or unclear parts. The Service Provider is expected to know everything about the work and its costs, even if the contract doesn't clearly say it. This means the Service Provider might have to do more work or pay for more things than expected, without getting extra money, and can't challenge the Warden's decisions.",
+      "recommendation": "Negotiate for an independent third-party to resolve discrepancies or interpretations, rather than the Warden. Seek to define the Scope of Work with greater precision and include a change order process for any additional work or 'finer details' that fall outside the initially defined scope. Limit the 'deemed knowledge' clauses to what is reasonably discoverable through standard due diligence, and clarify that errors or omissions by the Institute that result in additional costs or work for the Service Provider will lead to contract adjustments.",
+      "highlighted_quotes": [
+        {
+          "quote": "Should there be any discrepancy, inconsistency, error or commission in the contract, the matter may be referred to the Warden in-charge/Warden who shall give his decision and issue to the service provider instructions directing in what manner the work is to be carried out. The decision of the Warden in-charge/Warden shall be final and conclusive and the service provider shall carry out work in accordance with this decision.",
+          "page": 19
+        },
+        {
+          "quote": "The Scope of Work is only broadly defined and the finer details shall be finalized by the Warden in-charge/Warden during the course of the execution of work.",
+          "page": 19
+        },
+        {
+          "quote": "Any error in the description or quantity or omission there from shall not vitiate the contract or release the service provider from executing the work comprised in the contract according to specifications at the scheduled rates. He is deemed to have known the scope, nature and magnitude of the works and the requirements of the material and labour and the type of work involved, etc., and as to what all works he has to complete in accordance with the contract document whatever be the defects, omissions or errors that may be found in the contract document.",
+          "page": 19
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "6.5 Interpretation of Contract Documents :",
+      "page": 20,
+      "risk_level": "High",
+      "risk_type": "Security deposit deductions, Financial penalties, Payment risks, Unilateral authority clauses",
+      "criticality_score": 8,
+      "confidence": 10,
+      "legal_reason": "These clauses grant the Institute broad, unilateral power to deduct any compensation or sums payable by the Service Provider from the Security Deposit or any other sums due. The Service Provider is required to replenish the Security Deposit within an extremely short 10-day period, failing which a significant interest penalty of 12% per annum is levied. Furthermore, the Institute pays no interest on the Security Deposit held. This creates a significant financial risk for the Service Provider, allowing arbitrary deductions and imposing penalties without clear dispute resolution, while the Institute benefits from holding the funds without compensation.",
+      "simple_reason": "The Institute can take money from the Service Provider's Security Deposit or other payments for various reasons, including property damage. If the deposit is used, the Service Provider has only 10 days to put the money back, or they will be charged 12% interest. The Institute doesn't pay any interest on the Security Deposit it holds. This puts a lot of financial pressure on the Service Provider.",
+      "recommendation": "Negotiate for a more defined process for determining and disputing claims before any deductions are made from the Security Deposit. Extend the replenishment period to a more reasonable timeframe (e.g., 30 days or more) and reduce the interest penalty. Seek to include provisions for interest payments on the Security Deposit if held for a prolonged period, or explore alternatives like bank guarantees. Clearly define what constitutes 'property damage' and the process for assessing repair costs.",
+      "highlighted_quotes": [
+        {
+          "quote": "If the service provider or his employees break, deface or destroy the property or the establishment belonging to the Institute during the execution of the Contract, the same shall be made good by the service provider at his own expense and in default thereof, the Warden in-charge/Warden may cause the same to be made good by other agencies and recover expenses from the service provider.",
+          "page": 20
+        },
+        {
+          "quote": "All compensation or other sums of money payable by the service provider to the Institute and the recoveries to be made under terms of this contract may be deducted from his Security Deposit or from any sums which may be due/may become due to the service provider or any account whatsoever and in the event of his security deposit being reduced by reasons of any such deduction the service provider shall within 10 (ten) days make good in the form of a bank draft any sum or sums which may have been deducted from his Security Deposit, or any part thereof.",
+          "page": 20
+        },
+        {
+          "quote": "No interest shall be payable by the Institute for sums deposited as Security Deposit.",
+          "page": 20
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "7.14 Arbitration:",
+      "page": 27,
+      "risk_level": "High",
+      "risk_type": "Arbitration risks, Dispute restrictions, Unilateral authority clauses",
+      "criticality_score": 9,
+      "confidence": 10,
+      "legal_reason": "This clause introduces significant arbitration risks due to the appointment mechanism and procedural restrictions. The Sole Arbitrator is to be appointed by the Deputy Director of the Institute, a party to the contract, which raises serious concerns about the arbitrator's independence and impartiality. The provision that parties cannot challenge the arbitrator's jurisdiction after the award is made is highly problematic and can severely limit the Service Provider's rights to appeal. Additionally, the requirement to specify all disputes at the time of invocation can unduly restrict the scope of arbitration and prevent the inclusion of related or subsequently arising issues.",
+      "simple_reason": "The person who decides disputes (arbitrator) is chosen by the Institute, which might not be fair. Once the decision is made, it's very hard to challenge if the arbitrator had the right to make it. Also, the Service Provider has to list all problems at the start of the arbitration, which could miss new issues that come up later.",
+      "recommendation": "Negotiate for a mutually agreed-upon method of appointing the arbitrator (e.g., from a panel of independent arbitrators or by a neutral appointing authority) to ensure impartiality. Remove the restriction on challenging jurisdiction after the award or define specific, limited grounds for such a restriction in accordance with arbitration law. Clarify that the scope of arbitration can be expanded to include related issues that arise during the arbitration process.",
+      "highlighted_quotes": [
+        {
+          "quote": "Except as otherwise provided elsewhere in the contract, if any dispute, difference, question or disagreement or matter whatsoever, shall, before/after completion or abandonment of work or during extended period, hereafter arises between the parties, as to the meaning, operation or effect of the contract or out of or relating to the contract or breach thereof, shall be referred to a Sole Arbitrator to be appointed by the Deputy Director of the Institute at the time of the dispute.",
+          "page": 27
+        },
+        {
+          "quote": "The award given by the arbitrator so appointed shall be binding on the parties. It will not be open to the parties to challenge the jurisdiction of the arbitrator after the award has been made.",
+          "page": 27
+        },
+        {
+          "quote": "It is a term of the contract that the party invoking arbitration shall specify all disputes to be referred to arbitration at the time of the invocation of arbitration under the clause.",
+          "page": 27
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "7.3 Force Majeure:",
+      "page": 24,
+      "risk_level": "High",
+      "risk_type": "Unilateral termination, Force majeure risks, Payment risks, Financial penalties",
+      "criticality_score": 8,
+      "confidence": 10,
+      "legal_reason": "This clause grants the Institute a unilateral option to cancel the contract, either wholly or partially, if a force majeure event persists for more than one month, at its 'own discretion'. This significantly limits the Service Provider's recourse and business stability during unforeseen disruptive events. Crucially, the clause states that 'no amount shall be payable to the service provider' for the period of force majeure, imposing a direct financial loss on the Service Provider for unrecoverable costs or lost revenue during such periods, without any provision for reasonable compensation or mitigation.",
+      "simple_reason": "If a major event (like a flood or war) stops work for over a month, the Institute can cancel the contract whenever it wants. Also, the Service Provider won't get paid any money during the time work is stopped by this event, which means the Service Provider loses money.",
+      "recommendation": "Negotiate to extend the one-month period before the Institute can exercise its termination option. Seek clarification on compensation for costs incurred up to the point of termination or for demobilization costs if the contract is cancelled due to force majeure. Propose a clause that allows for mutual termination if force majeure persists, with fair compensation for the Service Provider's unrecoverable expenses. At minimum, clarify that the Service Provider will not be liable for non-performance during force majeure and explore provisions for the Institute to bear some costs if the contract is terminated.",
+      "highlighted_quotes": [
+        {
+          "quote": "If the work is suspended by force majeure conditions lasting for more than 1 (one) month, the Institute shall have the option of cancelling the contract in whole or in part thereof at its own discretion.",
+          "page": 24
+        },
+        {
+          "quote": "For the period of force majeure, no amount shall be payable to the service provider.",
+          "page": 24
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "3.4",
+      "page": 7,
+      "risk_level": "High",
+      "risk_type": "Payment risks, Financial penalties, Unilateral authority clauses, Binding obligations, Unilateral termination",
+      "criticality_score": 8,
+      "confidence": 10,
+      "legal_reason": "These clauses impose significant financial risks on the Service Provider. Clause 3.5 and 3.6 cap the raw material cost increase, transferring the risk of market price fluctuations (beyond a small margin) entirely to the Service Provider. The Institute (via HEC or Warden) retains unilateral authority to impose unspecified 'appropriate fines' for a broad range of subjective performance issues (3.10, 3.15) and can unilaterally close messes during vacations, resulting in 'no payment' to the Service Provider (3.13), directly impacting revenue. Violation of coupon sale rules (3.30) also leads to penalties and potential termination, creating multiple avenues for financial loss and contract instability.",
+      "simple_reason": "The Service Provider must keep raw material costs within a tight limit, even if prices go up a lot. The Institute can charge fines if they think the service is not good enough or if there are staff shortages. They can also close the mess for vacations without paying the Service Provider. Breaking rules about selling coupons can also lead to fines or contract termination. This means the Service Provider has many ways to lose money or the contract if things don't go exactly as the Institute wants.",
+      "recommendation": "Negotiate for more flexible price escalation clauses for raw materials (3.5, 3.6), tied to a recognized market index, allowing for full cost recovery. Seek clear definitions, criteria, and limits for 'appropriate fines' (3.10, 3.15) and establish a fair dispute resolution process before fines are imposed or deductions are made. Propose mechanisms for compensation or minimum guaranteed payments during periods of mess closure (3.13) to mitigate revenue loss. Define clear conditions and escalation steps for penalties and termination related to coupon sales (3.30).",
+      "highlighted_quotes": [
+        {
+          "quote": "The service provider shall ensure that sufficient care is taken on his part to keep the actual cost of the raw material including cooking fuel within a value of Rupees _______________ only (Rs. ______) per student per day. This value should not go up by more than Rs. 3/- for a period of one year to absorb change in raw material cost.",
+          "page": 8
+        },
+        {
+          "quote": "The HEC shall be authorized to impose an appropriate fine on the service provider in case of sub-standard quality of food items, malpractice, lack of hygiene or violation of any of the conditions of the contract.",
+          "page": 8
+        },
+        {
+          "quote": "Some of the messes may be closed during the vacations at the discretion of the institute. The actual dates of these vacations are decided well in advance and are readily available in the Institute calendar. The decision of the institute as to which of the messes is actually operated or closed during a vacation shall be final and binding on the Service Provider. During the academic session the messes will not be allowed to be closed on any day, including Sundays and other holidays, for any reasons whatsoever. No payment shall be made to service provider when the mess is closed.",
+          "page": 9
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "3.4",
+      "page": 8,
+      "risk_level": "Medium",
+      "risk_type": "Liability transfer, Security deposit deductions, Binding obligations",
+      "criticality_score": 7,
+      "confidence": 9,
+      "legal_reason": "This clause places the responsibility on the Service Provider to maintain the Institute's inventory items in 'good condition' and hand them over similarly at contract expiry. This creates a liability for potential repair or replacement costs for existing items, especially if their initial condition is not well-documented or if 'good condition' is subjectively determined. The refund of the security deposit is made conditional on a 'No Dues Certificate', giving the Institute leverage to claim costs against the deposit for perceived asset damage or poor condition.",
+      "simple_reason": "The Service Provider must keep the Institute's equipment and items in good shape. If they don't, the Institute can withhold the security deposit until it's happy, potentially charging the Service Provider for any repairs or replacements.",
+      "recommendation": "Conduct a detailed joint inventory and condition assessment of all Institute-provided assets at the commencement of the contract, documented with photographs and signatures. Agree on a definition for 'good condition' that accounts for normal wear and tear. Establish a clear process for assessing and disputing any claimed damages or maintenance issues, and ensure the 'No Dues Certificate' process is transparent and timely.",
+      "highlighted_quotes": [
+        {
+          "quote": "The service provider is expected to use the institute's inventory items and maintain them in good condition.",
+          "page": 9
+        },
+        {
+          "quote": "Similarly the inventory in good condition shall be handed over by the service provider to the HEC on the expiry of the contract period.",
+          "page": 9
+        },
+        {
+          "quote": "The security deposit shall be refunded only after a 'No Dues Certificate' is granted by the HEC.",
+          "page": 9
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "ARTICLE—5",
+      "page": 15,
+      "risk_level": "High",
+      "risk_type": "Payment risks, Unilateral authority clauses, Dispute restrictions",
+      "criticality_score": 8,
+      "confidence": 10,
+      "legal_reason": "This section presents multiple payment risks. Clause 5.2 establishes fixed rates with very limited grounds for revision, exposing the Service Provider to unrecoverable cost increases beyond minimum wage hikes or student number changes (e.g., general inflation, other operational costs). Clause 5.5 explicitly absolves the Institute from responsibility for payment processing delays, transferring all associated financial burden (e.g., cash flow issues) to the Service Provider. Clause 5.8 grants the Institute unilateral authority to modify coupon costs, directly impacting a revenue stream for the Service Provider. Finally, the extremely short one-week window for submitting claims (5.9) significantly restricts the Service Provider's ability to seek redress for valid issues, potentially leading to forfeiture of legitimate claims due to administrative hurdles or delayed discovery of the 'occurrence of the event'.",
+      "simple_reason": "The Service Provider's prices are mostly fixed, so if costs other than wages go up, the Service Provider absorbs them. The Institute is not responsible for paying bills late, which could hurt the Service Provider's cash flow. The Institute can also change the price of guest coupons without the Service Provider's agreement. Any complaints or claims the Service Provider has must be submitted within one week, which is a very tight deadline and could mean valid claims are missed.",
+      "recommendation": "Negotiate for more comprehensive price escalation clauses (5.2) to account for broader economic factors or specific material costs beyond just minimum wages. Introduce provisions for late payment interest from the Institute for delays exceeding a reasonable processing period (5.5). Seek mutual agreement or a defined process for modifying coupon costs (5.8) to protect the Service Provider's revenue model. Extend the claims submission window (5.9) to a more practical timeframe (e.g., 30 days) or link it to the discovery of the event rather than its occurrence.",
+      "highlighted_quotes": [
+        {
+          "quote": "During this period the rate shall not be revised under any circumstances, except in case of wage revision according to the Minimum Wages Act or in case there is significant change in the number of students availing messing facilities.",
+          "page": 15
+        },
+        {
+          "quote": "The institute shall not be responsible for any delay in the processing of such bills.",
+          "page": 15
+        },
+        {
+          "quote": "Any claim or compensation for any cause whatsoever for which there is no provision in the Contract shall be made in writing to the Warden in-charge/Warden within one week of the occurrence of the event due to which the claim or compensation is claimed, with a copy to the Institute. No claim made after the time prescribed shall be entertained or considered.",
+          "page": 16
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "6.3 Regarding compliance of statutory provisions:",
+      "page": 17,
+      "risk_level": "Medium",
+      "risk_type": "Compliance obligations, Binding obligations, Liability transfer",
+      "criticality_score": 7,
+      "confidence": 10,
+      "legal_reason": "This section imposes extensive and detailed statutory and regulatory compliance obligations on the Service Provider, including obtaining licenses, adhering to various labour laws (Contract Labour Act, Minimum Wages Act, ESI, EPF), maintaining records, and ensuring fair service conditions. While many of these are standard legal requirements for any employer, the sheer volume and explicit detailing within the contract transfer the full administrative and financial burden, and potential penalties for non-compliance, entirely to the Service Provider. Any oversight or failure in any of these areas can lead to significant legal and financial consequences.",
+      "simple_reason": "The Service Provider is fully responsible for following a long list of government rules and laws about employees, including getting licenses, paying minimum wages, handling insurance and retirement funds, and making sure staff have good working conditions. This means the Service Provider has to do a lot of paperwork and follow many rules, and will be solely responsible for any problems if these rules aren't met.",
+      "recommendation": "Conduct a thorough legal review of all specified statutory provisions to ensure full understanding of the requirements and associated costs. Implement robust internal processes for compliance, record-keeping, and timely payment of statutory dues. Ensure that the contract rates adequately cover the costs of fulfilling all these obligations. Consider requesting clarity on the Institute's role, if any, in facilitating compliance or providing information, given their registration under the Contract Labour Act.",
+      "highlighted_quotes": [
+        {
+          "quote": "As such, the service provider shall be required to obtain requisite license from the office of the Regional Labour Commissioner (Central) under the aforementioned Act.",
+          "page": 17
+        },
+        {
+          "quote": "The service provider shall abide by all the rules and regulations of the labour laws and rules framed there under and maintain all the registers required under the above mentioned Act, Rules and regulations, including the Contract Labour (Regulation and Abolition) Act, 1970.",
+          "page": 18
+        },
+        {
+          "quote": "The service provider shall be liable to comply with the Employees’ State Insurance (ESI) Act 1948 and Employees’ Provident Fund (EPF) and Miscellaneous Act 1952.",
+          "page": 18
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "6.2 Termination:",
+      "page": 17,
+      "risk_level": "High",
+      "risk_type": "Unilateral termination",
+      "criticality_score": 9,
+      "confidence": 10,
+      "legal_reason": "This clause grants the Institute an exceptionally broad and arbitrary power to terminate the contract. The ability to terminate 'for any reason' and 'without assigning any reasons thereof' undermines the Service Provider's business certainty and rights, making the contract highly vulnerable to unilateral discretion. Furthermore, the 30-day notice period, which can be 'appropriately reduced' under 'exceptional circumstances' (undefined), provides very little stability or opportunity for the Service Provider to rectify perceived issues or plan for contract cessation, creating significant operational and financial insecurity.",
+      "simple_reason": "The Institute can end the contract at any time, for almost any reason, even without telling the Service Provider why. They only need to give 30 days' notice, and can even shorten that time if they decide. This means the Service Provider's business is very unstable and could be stopped abruptly.",
+      "recommendation": "Negotiate to remove the phrase 'for any reason' and 'without assigning any reasons thereof'. Insist on clear, objective grounds for termination (e.g., material breach with a cure period) to protect against arbitrary termination. Ensure the 30-day notice period is firm and cannot be unilaterally reduced, or require a mutual agreement for any reduction. Seek provisions for compensation for any unrecovered costs or lost profits if the contract is terminated for convenience by the Institute.",
+      "highlighted_quotes": [
+        {
+          "quote": "The Institute shall at any time be entitled to determine and terminate the contract for any reason including unsatisfactory performance or violation of Minimum Wages Act or of any of the other terms and conditions of the contract.",
+          "page": 17
+        },
+        {
+          "quote": "A notice in writing from the Institute to the service provider shall be issued giving 30 (Thirty) days time for such termination and vacation of the premises, without assigning any reasons thereof.",
+          "page": 17
+        },
+        {
+          "quote": "Under exceptional circumstances this 30 day period may be appropriately reduced.",
+          "page": 17
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "6.1 Security Deposit:",
+      "page": 17,
+      "risk_level": "High",
+      "risk_type": "Security deposit deductions, Financial penalties, Unilateral authority clauses",
+      "criticality_score": 8,
+      "confidence": 10,
+      "legal_reason": "This clause grants the Institute an 'unqualified option' to forfeit the entire Security Deposit for an extremely broad range of reasons, including failure to 'honor any of its commitments' or for 'any amount due' from the Service Provider. This broad and unqualified right allows the Institute significant unilateral power to seize the Security Deposit without necessarily proving actual damages, establishing a clear breach, or providing a fair opportunity for the Service Provider to dispute the forfeiture. This creates a substantial financial risk for the Service Provider, as the large deposit can be lost arbitrarily.",
+      "simple_reason": "The Institute can take all of the Service Provider's security deposit for almost any reason it decides, even if the Service Provider just doesn't meet a commitment or owes any amount of money. This means the Service Provider could lose a large sum of money easily.",
+      "recommendation": "Negotiate to clearly define the specific conditions under which the Security Deposit can be forfeited, requiring a material breach or proven damages. Remove the 'unqualified option' language and establish a fair process for assessing and disputing any claimed failures or amounts due before forfeiture. Ensure that any forfeiture is limited to the actual amount of proven damages, rather than the entire deposit. Reference cross-clause 6.6, which imposes further penalties related to the security deposit.",
+      "highlighted_quotes": [
+        {
+          "quote": "The Institute shall have an unqualified option to forfeit the same if the service provider fails to honour any of its commitments under the contract and/or in respect of any amount due from the service provider to the Institute.",
+          "page": 17
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "6.6 Forfeiture of Security Deposit:",
+      "page": 21,
+      "risk_level": "High",
+      "risk_type": "Financial penalties, Security deposit deductions, Binding obligations",
+      "criticality_score": 8,
+      "confidence": 10,
+      "legal_reason": "This clause imposes a severe financial penalty on the Service Provider if the Security Deposit, once reduced by Institute deductions, is not replenished within a very short 10-day period. The 12% per annum interest rate for delay is substantial and can accrue rapidly. This provision, combined with the Institute's broad power to make deductions (as seen in 6.1 and 6.5.10), places significant immediate financial pressure and risk on the Service Provider, potentially leading to additional costs even for minor administrative delays.",
+      "simple_reason": "If the Institute uses part of the Security Deposit, the Service Provider must put that money back within 10 days. If not, the Service Provider will be charged a high 12% interest every year for the delay. This makes it very costly if there's any delay in replenishing the deposit.",
+      "recommendation": "Negotiate for an extended period for replenishing the Security Deposit (e.g., 30 days or more) to allow for internal processing and potential dispute resolution. Seek to reduce or remove the interest penalty, or link it to a more standard commercial interest rate. Clarify the process for notification of deductions and the Service Provider's right to dispute such deductions before the replenishment clock starts ticking.",
+      "highlighted_quotes": [
+        {
+          "quote": "In case the Institute is obliged to make any recoveries on any account from the Security Deposit of the service provider, the service provider shall be obliged to make good the Security Deposit amount within a period of 10 (ten) days after the receipt of information in this regard, failing which the service provider shall have to pay an interest of 12 percent per annum for the period of delay in making good the Security Deposit.",
+          "page": 21
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "7.0 Service provider's Subordinate Staff and their Conduct:",
+      "page": 22,
+      "risk_level": "High",
+      "risk_type": "Unilateral authority clauses, Liability transfer, Financial penalties, Compliance obligations",
+      "criticality_score": 9,
+      "confidence": 10,
+      "legal_reason": "This section grants the Institute's Warden broad, subjective, and unilateral authority over the Service Provider's employees, significantly impacting the Service Provider's operational control and imposing substantial financial and liability risks. The Warden can reject workers 'without assigning any reason' (7.0.2) and direct the removal of employees for subjective reasons like being 'undesirable for administrative or any other reason' (7.0.3), without requiring objective justification. The Service Provider is solely responsible for all associated costs (medical exams, replacement, repatriation) and bears the full liability for staff conduct, explicitly indemnifying the Institute from 'all consequent claims or actions for damages or injury'. The Warden's decision in these matters is final, leaving little recourse for the Service Provider.",
+      "simple_reason": "The Institute's Warden has almost complete power over who the Service Provider can hire and keep on staff, even if the reasons are not explained or seem unfair. The Service Provider has to pay for all employee checks, replacements, and any costs if an employee is removed. The Service Provider is also fully responsible for any problems or damages caused by its staff and must protect the Institute from any legal action related to this. The Warden's decisions are final.",
+      "recommendation": "Negotiate for objective and clearly defined criteria for the rejection or removal of employees, moving away from subjective reasons like 'undesirable for administrative reasons'. Establish a clear dispute resolution process for such decisions before removal or associated costs are incurred. Seek to limit the scope of the Service Provider's indemnity (7.0.4) to gross negligence or willful misconduct of its employees, rather than all consequent claims. Clarify that the Institute must provide specific, documented reasons for rejecting or removing staff.",
+      "highlighted_quotes": [
+        {
+          "quote": "The warden may reject any or all the names without assigning any reason.",
+          "page": 22
+        },
+        {
+          "quote": "If and whenever any of the service provider's employees shall, in the opinion of the Warden in-charge/Warden, be guilty of any misconduct or be incompetent or insufficiently qualified or negligent in the performance of their duties or that in the opinion of the Warden in-charge/Warden, it is undesirable for administrative or any other reason for such person or persons to be employed in the work, the service provider if so directed by the Warden in-charge/Warden, shall remove such person/persons from employment within a reasonable time.",
+          "page": 22
+        },
+        {
+          "quote": "The service provider shall be responsible for the proper behavior of all the staff, employed directly or indirectly, and shall exercise a proper degree of control over them and in particular and without prejudice to the said generality, the service provider shall be bound to prohibit and prevent any employees from trespassing/acting in anyway detrimental or prejudicial to the interest of the community or of the properties. The service provider shall be responsible thereof and relieve the Institute of all consequent claims or actions for damages or injury or on any the other grounds whatsoever.",
+          "page": 23
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "7.7 Schedule of Rates to be Inclusive:",
+      "page": 25,
+      "risk_level": "High",
+      "risk_type": "Scope creep risks, Payment risks, Liability transfer, Binding obligations, Unilateral authority clauses",
+      "criticality_score": 9,
+      "confidence": 10,
+      "legal_reason": "This clause is highly unfavorable, effectively making the contract a fixed-price arrangement with significant hidden cost potential and an open-ended scope for the Service Provider. It explicitly states rates are firm with minimal escalation, and are 'deemed to include and cover all costs, expenses and liabilities of every description and all risks of every kind'. The Service Provider is 'deemed to have known' the full nature and extent of the work and materials, even if not 'fully and precisely incorporated' in the contract. Critically, the 'opinion of the Warden in-charge/Warden as to the items of work which are necessary and reasonable for completion of the work shall be final and binding' even if not described in the documents. This grants the Warden unilateral authority to expand the scope of work without additional payment, creating an extreme risk of uncompensated work and financial loss for the Service Provider.",
+      "simple_reason": "The agreed prices are fixed, except for changes to minimum wages, and are assumed to cover absolutely all costs, risks, and liabilities for the Service Provider. The Service Provider is expected to know everything about the work, even if it's not clearly written in the contract. The Warden can decide what extra work is 'necessary' and the Service Provider has to do it without extra pay. This means the Service Provider could end up doing much more work than planned for no additional money.",
+      "recommendation": "Strongly negotiate to revise this clause. Introduce clear change order procedures for any work requested by the Warden that is not explicitly detailed in the contract. Seek to define and limit the scope of 'all costs, expenses and liabilities of every description and all risks of every kind'. Remove or significantly modify the 'deemed to have known' provision to align with a reasonable standard of due diligence. Challenge the Warden's 'final and binding' authority on scope additions, advocating for mutual agreement and compensation for additional work.",
+      "highlighted_quotes": [
+        {
+          "quote": "The prices/rates accepted by the service provider shall remain firm till the issue of final certificates and shall not be subjected to any escalation except for the adjustments on account of revision of minimum wages by the Government in respect of workmen directly employed on the work.",
+          "page": 25
+        },
+        {
+          "quote": "The prices/rates shall be deemed to include and cover all costs, expenses and liabilities of every description and all risks of every kind to be taken in executing the work.",
+          "page": 25
+        },
+        {
+          "quote": "The opinion of the Warden in-charge/Warden as to the items of work which are necessary and reasonable for completion of the work shall be final and binding on the service provider although the same may not be shown on or described specifically in contract documents.",
+          "page": 25
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "7.2 Power of Entry:",
+      "page": 23,
+      "risk_level": "High",
+      "risk_type": "Unilateral termination, Financial penalties, Unilateral authority clauses, Liability transfer",
+      "criticality_score": 10,
+      "confidence": 10,
+      "legal_reason": "This clause grants the Institute extremely aggressive and unilateral remedies for a wide array of Service Provider failures, many of which are subjective (e.g., 'fails to carry out the works to the satisfaction of the Warden'). The Institute can unilaterally rescind the contract, seize the Service Provider's premises, materials, and stock, and complete the work through its own agents. Furthermore, the Institute reserves the right to sell the Service Provider's materials and recover any 'deficiency' (costs exceeding contract value) from the Service Provider. This clause represents a maximum risk of abrupt termination, asset forfeiture, and significant financial liability for the Service Provider, with very limited due process.",
+      "simple_reason": "If the Institute decides the Service Provider isn't doing the job well enough, or breaks any rules, the Institute can immediately take over the work, seize all of the Service Provider's equipment and supplies, end the contract, and sell the Service Provider's belongings to cover any extra costs. This is an extremely harsh set of consequences for the Service Provider.",
+      "recommendation": "Strongly negotiate to modify this clause. Insist on clear, objective, and material grounds for exercising such severe remedies, with mandatory cure periods for rectifiable breaches. Challenge the Institute's unilateral right to take possession of the Service Provider's materials without fair market valuation and compensation. Remove the right to sell the Service Provider's material without a court order or clear, agreed-upon valuation and sale process. Ensure any 'deficiency' calculation is transparent, auditable, and subject to dispute resolution rather than solely certified by the Warden. This clause should be a top priority for revision.",
+      "highlighted_quotes": [
+        {
+          "quote": "If the service provider does not commence the work in the manner described in the contract document or if at any time in the opinion of the Warden in-charge/Warden, the service provider: a) fails to carry out the works in conformity with the contract documents; or b) violate any of the statutory provisions including but not restricted to the Minimum Wages Act, ESI Act and EPF Act; or c) fails to carry out the works in accordance with the contract schedule; or d) substantially suspends the work without authority from the Warden in-charge/Warden; or e) fails to carry out and execute the works to the satisfaction of the Warden-in-charge/Warden; or f) fails to facilitate procurement of sufficient/suitable raw material or things; or g) commits or suffers, or permits any other breach of kind or observes or persists in any of the above mentioned breaches of the contract, after a notice in writing being given to the service provider by the Warden in-charge/Warden requiring such breach to be remedied; or h) if the service provider abandons the works — then, in any of the such cases, the Institute shall have the power to enter upon the premises and take possession thereof and of the material and stock thereon and to rescind the contract, and to carry on with the work by his agents, workmen and the supervisors as the Institute in its absolute discretion may think proper to employ without making payment to the service provider for the said material other than such as may be certified in writing by the Warden in-charge/Warden to be reasonable, then the amount of such excess as certified by the Warden in-charge/Warden shall be deducted from any money which may be due for work done by the service provider and be made good under the contract and not paid for.",
+          "page": 23
+        },
+        {
+          "quote": "Any deficiency shall forthwith be made good and paid to the Institute by the service provider and the Institute shall have the power to sell in such manner and for price as it may think fit all material pertaining to the service provider and to recover the said deficiency out of the proceeds of the sale.",
+          "page": 24
+        }
+      ],
+      "cross_clause_conflicts": []
+    },
+    {
+      "section_title": "7.15 Jurisdiction:",
+      "page": 27,
+      "risk_level": "Low",
+      "risk_type": "Dispute restrictions",
+      "criticality_score": 3,
+      "confidence": 10,
+      "legal_reason": "This clause specifies that disputes will be heard exclusively by courts in Kanpur. While common, this can be a practical burden and increase litigation costs for the Service Provider if its principal place of business is located far from Kanpur, requiring them to engage local counsel and incur travel expenses for any judicial proceedings. It restricts the Service Provider's choice of forum, potentially limiting convenience.",
+      "simple_reason": "Any legal problems must be dealt with only in courts in Kanpur. If the Service Provider is not based in Kanpur, this could make it more expensive and difficult to handle legal disputes.",
+      "recommendation": "If the Service Provider is not based in Kanpur, consider negotiating for a more neutral or mutually convenient jurisdiction, or agree to non-exclusive jurisdiction. Evaluate the potential additional costs of litigation in Kanpur.",
+      "highlighted_quotes": [
+        {
+          "quote": "The service provider shall hereby submit to the jurisdiction of the courts situated at Kanpur for the purpose of actions and proceedings arising out of the contract and the courts at Kanpur shall have the sole jurisdiction to hear and decide such actions and proceedings.",
+          "page": 28
+        }
+      ],
+      "cross_clause_conflicts": []
+    }
+  ],
+  "total_sections": 37,
+  "gap_analysis": [
+    {
+      "title": "Intellectual Property Rights",
+      "impact_severity": "MEDIUM",
+      "reason_missing": "The contract lacks provisions addressing the ownership, licensing, or usage rights for any intellectual property (e.g., proprietary recipes, operating procedures, software, or unique methods) created, used, or brought by the Service Provider during the course of performing the 'Work'. This omission could lead to disputes over who owns or has rights to use these valuable assets, especially if the Institute wishes to continue utilizing them after the contract's termination.",
+      "simple_explanation": "This clause clarifies who owns any new ideas, unique processes, specialized recipes, software, or specific tools that are created or used by the service provider while providing the mess services. Without it, there could be disagreements about who has the right to use or benefit from these things, particularly if the Institute wants to keep using them after the contract ends. It protects both parties' innovations and investments.",
+      "draft_text": "### X.0 Intellectual Property Rights\n\nX.1 All Intellectual Property Rights (including but not limited to patents, copyrights, trademarks, trade secrets, and know-how) existing prior to the commencement of the Work and owned by either Party shall remain the exclusive property of that Party ('Pre-existing IP'). Each Party grants to the other Party a non-exclusive, royalty-free license to use its Pre-existing IP solely to the extent necessary for the performance of the Work under this Contract.\n\nX.2 All Intellectual Property Rights developed, conceived, or first reduced to practice by the Service Provider, alone or jointly with others, in the course of performing the Work under this Contract and specifically relating to the services provided hereunder (collectively, 'Work Product IP'), shall be deemed 'works made for hire' and shall be the exclusive property of the Institute. To the extent that Work Product IP is not considered 'works made for hire,' the Service Provider hereby assigns, and agrees to assign, all right, title, and interest in and to such Work Product IP to the Institute.\n\nX.3 The Service Provider warrants that the Work, and its performance thereof, will not infringe upon the Intellectual Property Rights of any third party. The Service Provider shall indemnify, defend, and hold harmless the Institute from and against any and all claims, damages, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of any actual or alleged infringement of a third party's Intellectual Property Rights by the Service Provider's performance of the Work or the Work Product IP."
+    },
+    {
+      "title": "Data Privacy & Confidentiality",
+      "impact_severity": "HIGH",
+      "reason_missing": "The contract lacks essential provisions for the protection of sensitive information, such as student personal details, dietary restrictions, and potentially financial or operational data. It also fails to define the Service Provider's obligations regarding data privacy, security measures, and compliance with applicable data protection laws and the Institute's internal policies. This absence creates significant legal and reputational risks related to data breaches, unauthorized disclosure, and non-compliance with privacy regulations.",
+      "simple_explanation": "This crucial clause ensures that any personal or sensitive information – like residents' names, dietary needs, or operational details – is kept private and secure by the service provider. It outlines how this data must be handled, protected from unauthorized access, and not shared or misused. Without this, there's a high risk of privacy violations, data leaks, and potential legal consequences for the Institute and its residents.",
+      "draft_text": "### Y.0 Data Privacy and Confidentiality\n\nY.1 The Service Provider acknowledges that in the performance of its obligations under this Contract, it may have access to or process Confidential Information of the Institute and/or personal data of students, staff, or other individuals ('Personal Data'). The Service Provider agrees to treat all Confidential Information and Personal Data with the utmost confidentiality and to use it solely for the purpose of fulfilling its obligations under this Contract.\n\nY.2 The Service Provider shall implement and maintain appropriate technical and organizational measures to ensure a level of security appropriate to the risks associated with the processing of Confidential Information and Personal Data, including protection against unauthorized or unlawful processing and against accidental loss, destruction, or damage. These measures shall be no less stringent than those used by the Institute for its own data.\n\nY.3 The Service Provider shall not disclose, copy, reproduce, or transmit Confidential Information or Personal Data to any third party without the Institute's prior written consent, except as required by law. The Service Provider shall ensure that all its employees, agents, and subcontractors who have access to Confidential Information or Personal Data are bound by confidentiality obligations no less protective than those set forth herein.\n\nY.4 The Service Provider shall comply with all applicable data protection laws and regulations, as well as the Institute's internal data privacy policies, as communicated from time to time. Upon termination or expiry of this Contract, the Service Provider shall, at the Institute's discretion, promptly return or securely destroy all Confidential Information and Personal Data."
+    },
+    {
+      "title": "Mutual Termination for Convenience",
+      "impact_severity": "HIGH",
+      "reason_missing": "The provided contract sections lack any provisions for the termination of the agreement, whether for cause or for convenience. Specifically, the absence of a 'mutual termination for convenience' clause means that neither party has a contractual right to unilaterally end the agreement without cause, by providing notice and potentially compensation, before its natural expiry. This rigidity can lock parties into a contract that may no longer be economically viable or strategically desirable, leading to prolonged disputes or forcing a breach to exit.",
+      "simple_explanation": "This clause allows either the Institute or the service provider to end the contract early, even if no one has violated its terms, simply by giving proper written notice (e.g., 90 days). It provides a crucial escape route and flexibility for both parties if circumstances change, or if the arrangement isn't working out as expected without any fault. Without it, both parties are legally bound for the full term, even if they wish to part ways amicably, making it difficult to adapt to new situations.",
+      "draft_text": "### Z.0 Termination for Convenience\n\nZ.1 Either Party may terminate this Contract for convenience, at any time, by providing the other Party with at least ninety (90) days' prior written notice of such termination.\n\nZ.2 Upon receipt of a notice of termination for convenience, the Service Provider shall, as directed by the Institute, immediately cease all work, terminate all subcontracts, and take all necessary steps to mitigate expenses and complete an orderly transition of services. The Service Provider shall submit a final invoice for all services satisfactorily rendered and expenses reasonably incurred up to the effective date of termination, which shall be paid by the Institute subject to verification.\n\nZ.3 In no event shall the Institute be liable for any anticipatory profits or consequential damages incurred by the Service Provider as a result of a termination for convenience under this Section."
+    },
+    {
+      "title": "Dispute Resolution (Mediation/Escalation)",
+      "impact_severity": "HIGH",
+      "reason_missing": "The contract is devoid of any structured mechanism for resolving disputes between the parties. While Article 1.4 grants the Warden unilateral penalty power for violations, it does not provide a framework for broader contractual disagreements. Without defined escalation steps (e.g., direct negotiation, mediation) before resorting to formal arbitration or litigation, any minor disagreement could immediately lead to costly, time-consuming, and potentially relationship-damaging legal proceedings, hindering efficient resolution.",
+      "simple_explanation": "This clause sets out a clear, step-by-step process for handling disagreements between the Institute and the service provider. Instead of immediately heading to court, it encourages them to first try to resolve issues through direct discussions, then potentially involve a neutral third party (mediator) to help find a solution. This approach aims to save time and money, preserve the business relationship, and avoid immediate, expensive legal battles.",
+      "draft_text": "### AA.0 Dispute Resolution\n\nAA.1 **Informal Resolution:** The Parties shall attempt to resolve any dispute, controversy, or claim arising out of or relating to this Contract, or the breach, termination, or invalidity thereof, through good faith negotiations between senior management representatives of both Parties. Such negotiations shall commence within fifteen (15) days of one Party providing written notice of the dispute to the other Party.\n\nAA.2 **Mediation:** If the Parties are unable to resolve the dispute through informal negotiations within thirty (30) days of the commencement of such negotiations, either Party may propose mediation. The Parties shall endeavor to settle the dispute by mediation under the rules of [Insert preferred mediation institution, e.g., Indian Council of Arbitration (ICA) or ad hoc rules], with such mediation to be held in Kanpur, Uttar Pradesh. The costs of mediation shall be shared equally by the Parties.\n\nAA.3 **Arbitration:** If the dispute is not resolved through mediation within sixty (60) days of the commencement of mediation, or if either Party declines to participate in mediation, the dispute shall be referred to and finally resolved by arbitration in accordance with the provisions of the Arbitration and Conciliation Act, 1996 (or any statutory modification or re-enactment thereof). The arbitral tribunal shall consist of a sole arbitrator appointed by mutual agreement of the Parties. If the Parties fail to agree on a sole arbitrator within thirty (30) days of the referral to arbitration, then the arbitrator shall be appointed in accordance with the rules of [Insert preferred arbitration institution, e.g., ICA]. The seat and venue of the arbitration shall be Kanpur, Uttar Pradesh, India. The language of the arbitration shall be English. The award rendered by the arbitrator shall be final and binding on both Parties."
+    },
+    {
+      "title": "Subcontracting Restrictions",
+      "impact_severity": "HIGH",
+      "reason_missing": "The contract fails to address whether the Service Provider is permitted to subcontract any portion of the 'Work' and, if so, under what specific conditions (e.g., requiring prior approval from the Institute, maintaining full liability for subcontractor's performance, ensuring subcontractor compliance with contract terms). This omission creates a significant risk that critical services could be delegated to unknown, unvetted, or potentially unqualified third parties, leading to compromised service quality, security concerns (e.g., staff background checks), loss of control over operations, and ambiguity regarding accountability.",
+      "simple_explanation": "This clause specifies whether the main service provider can hire other companies or individuals (subcontractors) to perform parts of the mess services, and if so, under what specific rules. For instance, it might require the Institute's written permission before any subcontracting, or state that the main service provider remains fully responsible for the subcontractor's work and compliance with all contract terms. Without this, the Institute could lose control over who is actually performing the services, impacting quality, safety, and accountability.",
+      "draft_text": "### BB.0 Subcontracting\n\nBB.1 The Service Provider shall not assign or subcontract any of its rights or obligations under this Contract, in whole or in part, without the prior written consent of the Institute. Such consent shall not be unreasonably withheld.\n\nBB.2 Any consent granted by the Institute for subcontracting shall not relieve the Service Provider of its responsibilities or obligations under this Contract, and the Service Provider shall remain fully liable for the performance of the Work by its subcontractors and for their compliance with all terms and conditions of this Contract. The Service Provider shall ensure that any subcontracting agreement contains provisions that are no less onerous than those contained in this Contract, particularly concerning confidentiality, data privacy, and service quality.\n\nBB.3 The Institute reserves the right to require the Service Provider to terminate any subcontract that, in the Institute's reasonable judgment, is detrimental to the performance of the Work or the interests of the Institute."
+    }
+  ],
+  "metadata": {
+    "effective_date": "Not Specified",
+    "duration": "2 Years",
+    "first_party": "Indian Institute of Technology Kanpur (IITK)",
+    "second_party": "Service provider",
+    "jurisdiction": "Not Specified"
+  },
+  "placeholders": [
+    {
+      "placeholder": "__________",
+      "page": 1,
+      "context": "... AND M/s __________ registered under ________________________ and having it’s office at __________________________________________________ (hereinafter referred to as ..."
+    },
+    {
+      "placeholder": "__________________________________________________",
+      "page": 1,
+      "context": "... AND M/s __________ registered under ________________________ and having it’s office at __________________________________________________ (hereinafter referred to as The Service Provider which expression shall include his/their respective heirs, executors, ..."
+    },
+    {
+      "placeholder": "_____________________________",
+      "page": 1,
+      "context": "... The Service Provider which expression shall include his/their respective heirs, executors, administrators and assignees), represented by _____________________________ on the other part. ..."
+    },
+    {
+      "placeholder": "__________",
+      "page": 2,
+      "context": "... the General Conditions of the Contract. AND whereas the Service Provider has deposited a sum of Rs. __________ (___ lakhs only) as earnest money in the form of a Demand Draft No. ________ dated _______ issued by ..."
+    },
+    {
+      "placeholder": "________",
+      "page": 2,
+      "context": "... AND whereas the Service Provider has deposited a sum of Rs. __________ (___ lakhs only) as earnest money in the form of a Demand Draft No. ________ dated _______ issued by ___________________ in favour of Hall Management, IIT Kanpur payable at UBI, I.I.T. ..."
+    },
+    {
+      "placeholder": "___________________",
+      "page": 2,
+      "context": "... as earnest money in the form of a Demand Draft No. ________ dated _______ issued by ___________________ in favour of Hall Management, IIT Kanpur payable at UBI, I.I.T. Branch Kanpur as performance guarantee for the said work and has agreed that this be ..."
+    },
+    {
+      "placeholder": "__________",
+      "page": 2,
+      "context": "... AND whereas the Service Provider has promised to deposit Rs. __________ (_____ lakhs only) as remaining part of the security deposit in the form of a Bank Draft latest by ..."
+    },
+    {
+      "placeholder": "__________",
+      "page": 2,
+      "context": "... only) as remaining part of the security deposit in the form of a Bank Draft latest by __________ ..."
+    },
+    {
+      "placeholder": "____________________",
+      "page": 3,
+      "context": "... __________________________ M/s ____________________ _______________________ ..."
+    },
+    {
+      "placeholder": "_____________________________",
+      "page": 3,
+      "context": "... 1_____________________________ ..."
+    },
+    {
+      "placeholder": "______________________",
+      "page": 3,
+      "context": "... 2. ______________________ ..."
+    },
+    {
+      "placeholder": "____",
+      "page": 6,
+      "context": "... 2.1 The Hall of Residence No.-__ is a ____s’ Hostel situated inside the campus of the Institute with an exclusive and fully secured premise of its own. The ..."
+    },
+    {
+      "placeholder": "___",
+      "page": 6,
+      "context": "... residents with a centrally located dining facility, administrative block, coffee shop, etc. The hostel is designed to accommodate a total of ___ students approximately with a minor variation. ..."
+    },
+    {
+      "placeholder": "________________________________",
+      "page": 8,
+      "context": "... keep the actual cost of the raw material including cooking fuel within a value of Rupees ________________________________ only (Rs. ______) per student per day. This value should not go up by more than Rs. 3/- for a period of one ..."
+    },
+    {
+      "placeholder": "[s]",
+      "page": 12,
+      "context": "... provider. If in the opinion of the Institute any of the service provider's employee [s] is found to be suffering from any such disease/condition or if any employee(s) of the service provider is found to have committed ..."
+    },
+    {
+      "placeholder": "__________",
+      "page": 15,
+      "context": "... The charges for providing operational services in the mess of Hall-__ shall be Rs. __________ (rupees __________________________only) per month ..."
+    },
+    {
+      "placeholder": "[ten]",
+      "page": 15,
+      "context": "... bills shall normally be for purchase of preceding two weeks. The Warden in- charge/Warden shall make efforts that the bills are paid within 10 [ten] working days of submission. The institute shall not be responsible for any ..."
+    },
+    {
+      "placeholder": "_________",
+      "page": 16,
+      "context": "... defined for purpose of Article 3.5, plus fixed cost, suitably rounded. This fixed cost shall be calculated by dividing Rs. _________/- by thirty times the number of students i.e. Rs. _________÷(number of students)X30. The coupon ..."
+    },
+    {
+      "placeholder": "_________",
+      "page": 16,
+      "context": "... fixed cost shall be calculated by dividing Rs. _________/- by thirty times the number of students i.e. Rs. _________÷(number of students)X30. The coupon cost may be modified from time to time by the institute. The service provider ..."
+    }
+  ]
+}

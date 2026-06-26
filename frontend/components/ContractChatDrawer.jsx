@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { X, Sparkles, AlertCircle, Bot } from "lucide-react";
+import { X, AlertCircle, Bot } from "lucide-react";
 import MessageBubble from "./MessageBubble";
 import ChatInput from "./ChatInput";
 import { useChat } from "../hooks/useChat";
@@ -17,10 +17,17 @@ export default function ContractChatDrawer({ documentId, isOpen, onClose }) {
   const messagesEndRef = useRef(null);
   const chatMutation = useChat();
 
+  const suggestionQuestions = [
+    "What are the termination conditions?",
+    "Is there a liability cap in this contract?",
+    "Are there any financial penalties or late fees?",
+    "What is the governing law and jurisdiction?"
+  ];
+
   const handleSend = (text) => {
     // 1. Add user message
     const userMsg = {
-      id: Math.random().toString(36).substring(7),
+      id: `user-${messages.length}`,
       sender: "user",
       text,
       timestamp: new Date().toISOString(),
@@ -33,7 +40,7 @@ export default function ContractChatDrawer({ documentId, isOpen, onClose }) {
       {
         onSuccess: (data) => {
           const assistantMsg = {
-            id: Math.random().toString(36).substring(7),
+            id: `assistant-${messages.length + 1}`,
             sender: "assistant",
             text: data.answer,
             timestamp: new Date().toISOString(),
@@ -42,7 +49,7 @@ export default function ContractChatDrawer({ documentId, isOpen, onClose }) {
         },
         onError: (err) => {
           const errorMsg = {
-            id: Math.random().toString(36).substring(7),
+            id: `error-${messages.length + 1}`,
             sender: "assistant",
             text: `⚠️ Failed to get answer: ${err.message || "Something went wrong. Please check if your backend is running."}`,
             timestamp: new Date().toISOString(),
@@ -61,18 +68,18 @@ export default function ContractChatDrawer({ documentId, isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-24 right-4 md:right-6 z-[80] flex flex-col rounded-2xl border border-slate-800 bg-slate-950 shadow-2xl shadow-indigo-950/20 overflow-hidden w-[90vw] md:w-[420px] h-[80vh] md:h-[650px]">
+    <div className="fixed bottom-24 right-4 md:right-6 z-[80] flex flex-col rounded-2xl border border-slate-800 bg-slate-950 shadow-2xl shadow-indigo-950/20 overflow-hidden w-[90vw] md:w-[400px] h-[65vh] max-h-[calc(100vh-120px)] min-h-[400px] md:h-[550px]">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-slate-850 bg-slate-900/60">
-        <div className="flex items-center gap-2">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600 text-white shadow shadow-indigo-600/30">
-            <Bot className="h-4 w-4" />
+      <div className="flex items-center justify-between p-4 border-b border-slate-850 bg-slate-900/80 backdrop-blur-sm shrink-0">
+        <div className="flex items-center gap-2.5">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white shadow shadow-indigo-600/30">
+            <Bot className="h-4.5 w-4.5" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-white leading-none">Contract Intelligence</h4>
-            <span className="text-[10px] text-emerald-400 font-semibold flex items-center gap-1 mt-1">
+            <h4 className="text-sm font-extrabold text-white tracking-tight leading-none">Contract AI</h4>
+            <span className="text-[10px] text-emerald-400 font-semibold flex items-center gap-1 mt-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Connected to Contract Context
+              Active Analysis Context
             </span>
           </div>
         </div>
@@ -90,6 +97,26 @@ export default function ContractChatDrawer({ documentId, isOpen, onClose }) {
         {messages.map((msg) => (
           <MessageBubble key={msg.id} message={msg} />
         ))}
+
+        {messages.length === 1 && !chatMutation.isPending && (
+          <div className="space-y-2 mt-2">
+            <span className="text-[9px] font-extrabold text-slate-500 uppercase tracking-widest block pl-1">
+              Suggested Queries
+            </span>
+            <div className="grid grid-cols-1 gap-2">
+              {suggestionQuestions.map((q, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => handleSend(q)}
+                  className="text-left text-[11px] font-semibold text-slate-350 bg-slate-900/60 hover:bg-slate-850/85 border border-slate-850 hover:border-indigo-900/60 px-3.5 py-2.5 rounded-xl transition-all duration-200 active:scale-98 leading-normal shadow-sm hover:text-white"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Typing Indicator */}
         {chatMutation.isPending && (

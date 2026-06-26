@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import Navbar from "../../../components/Navbar";
@@ -11,13 +11,23 @@ import FloatingChatButton from "../../../components/FloatingChatButton";
 import ContractChatDrawer from "../../../components/ContractChatDrawer";
 import PageLoader from "../../../components/PageLoader";
 import { useAnalysis } from "../../../hooks/useAnalysis";
-import { FileText, ArrowRight, ShieldCheck, HelpCircle } from "lucide-react";
+import { ArrowRight, ShieldCheck, HelpCircle, FileText, FileJson } from "lucide-react";
 
 export default function DashboardPage() {
   const params = useParams();
   const documentId = params.documentId;
   const { data, isLoading, error } = useAnalysis(documentId);
   const [chatOpen, setChatOpen] = useState(false);
+
+  const getDownloadSummaryPdfUrl = () => {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    return `${baseUrl}/download-summary-pdf/${documentId}`;
+  };
+
+  const getDownloadJsonUrl = () => {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    return `${baseUrl}/analysis/${documentId}`;
+  };
 
   if (isLoading) {
     return (
@@ -66,14 +76,32 @@ export default function DashboardPage() {
               Doc ID: <span className="font-mono text-slate-500">{documentId}</span>
             </p>
           </div>
-          <Link
-            href={`/contract-review/${documentId}`}
-            className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-indigo-600/10 active:scale-95 transition-all duration-200"
-          >
-            <FileText className="h-4 w-4" />
-            Open Evidence Workspace
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          
+          <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-center">
+            {/* Download Summary PDF */}
+            <a
+              href={getDownloadSummaryPdfUrl()}
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 px-4 py-2.5 text-xs font-semibold text-white shadow transition-all duration-200 active:scale-[0.98]"
+            >
+              <FileText className="h-4 w-4 text-indigo-200" />
+              Download Summary PDF
+            </a>
+
+            {/* Download Raw JSON */}
+            <a
+              href={getDownloadJsonUrl()}
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 hover:bg-slate-850 border border-slate-800 px-4 py-2.5 text-xs font-semibold text-slate-300 hover:text-white transition-all duration-200 active:scale-[0.98]"
+            >
+              <FileJson className="h-4 w-4 text-amber-500" />
+              Raw JSON
+            </a>
+          </div>
         </div>
 
         {/* SECTION 1: Contract Summary */}

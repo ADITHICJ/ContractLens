@@ -365,7 +365,7 @@ export default function ContractSummary({
                         </span>
                       </div>
                       <p className="text-[10px] text-slate-400 italic mt-1.5 leading-relaxed">
-                        "{item.context}"
+                        &quot;{item.context}&quot;
                       </p>
                     </div>
                   </div>

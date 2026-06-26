@@ -29,7 +29,7 @@ export default function LoadingOverlay({ isVisible }) {
         }
         return prev;
       });
-    }, 3500); // 3.5 seconds per step
+    }, 800); // 800ms per step to match optimized backend analysis speed
 
     return () => clearInterval(interval);
   }, [isVisible]);
