@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import UploadZone from "../components/UploadZone";
 import LoadingOverlay from "../components/LoadingOverlay";
-import { uploadContract, analyzeContract } from "../lib/api";
+import { uploadContract } from "../lib/api";
 import { 
   ShieldAlert, 
   BookOpen, 
@@ -31,10 +31,7 @@ export default function Home() {
         throw new Error("Invalid response from parse server.");
       }
 
-      // Step 2: Run Gemini legal analyzer immediately
-      await analyzeContract(data.documentId);
-
-      // Step 3: Redirect directly to the dashboard page once data is fully available
+      // Step 2: Redirect directly to the dashboard page once data is fully available
       router.push(`/dashboard/${data.documentId}`);
     } catch (err) {
       console.error(err);

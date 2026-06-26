@@ -46,16 +46,4 @@ export async function chatContract(documentId, question) {
   return response.json();
 }
 
-export async function analyzeContract(documentId) {
-  const response = await fetch(`${API_BASE_URL}/analyze-contract/${documentId}`, {
-    method: "POST"
-  });
-
-  if (!response.ok) {
-    const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.detail || "Failed to analyze contract.");
-  }
-
-  return response.json();
-}
 

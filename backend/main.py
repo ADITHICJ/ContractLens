@@ -293,6 +293,224 @@ async def download_highlighted(documentId: str):
     except Exception as e:
         print(f"Error highlighting PDF: {e}")
         return FileResponse(pdf_path, media_type="application/pdf", filename="contract.pdf")
+@app.get("/download-summary-pdf/{documentId}")
+async def download_summary_pdf(documentId: str):
+    """
+    Generates a summarized PDF report containing metadata, risks, gaps, and placeholders, and returns it.
+    """
+    doc_dir = os.path.join(UPLOAD_DIR, documentId)
+    pdf_path = os.path.join(doc_dir, "contract.pdf")
+    analysis_path = os.path.join(doc_dir, "analysis.json")
+    output_path = os.path.join(doc_dir, "summary_report.pdf")
+
+    if not os.path.exists(analysis_path):
+        raise HTTPException(status_code=404, detail="Analysis results not found. Please analyze the contract first.")
+
+    try:
+        import fitz
+        from datetime import datetime
+        
+        # Load analysis results
+        with open(analysis_path, "r", encoding="utf-8") as f:
+            analysis = json.load(f)
+
+        doc = fitz.open()
+        margin = 54
+        width = 612
+        height = 792 # US Letter dimensions
+        
+        page = doc.new_page(width=width, height=height)
+        y = margin
+        
+        def check_page(needed_height):
+            nonlocal page, y
+            if y + needed_height > (height - margin):
+                page = doc.new_page(width=width, height=height)
+                y = margin
+                # Draw header
+                rect = fitz.Rect(margin, y, width - margin, y + 15)
+                page.insert_textbox(rect, "ContractLens Intelligence Summary", fontsize=8, fontname="Helvetica", color=(0.5, 0.5, 0.5))
+                y += 20
+                page.draw_line(fitz.Point(margin, y), fitz.Point(width - margin, y), color=(0.8, 0.8, 0.8), width=0.5)
+                y += 15
+
+        def write_paragraph(text, x_indent=0, font_size=9, font_name="Helvetica", color=(0.2, 0.2, 0.2), spacing=12, is_bold=False, is_oblique=False):
+            nonlocal page, y
+            max_width = width - margin - (margin + x_indent)
+            chars_per_line = int(max_width / (font_size * 0.48))
+            
+            paragraphs = str(text).split("\n")
+            lines = []
+            for para in paragraphs:
+                words = para.split(" ")
+                current_line = []
+                for word in words:
+                    test_line = " ".join(current_line + [word])
+                    if len(test_line) > chars_per_line and current_line:
+                        lines.append(" ".join(current_line))
+                        current_line = [word]
+                    else:
+                        current_line.append(word)
+                if current_line:
+                    lines.append(" ".join(current_line))
+                    
+            fname = font_name
+            if is_bold and is_oblique:
+                fname = font_name + "-BoldOblique"
+            elif is_bold:
+                fname = font_name + "-Bold"
+            elif is_oblique:
+                fname = font_name + "-Oblique"
+                
+            for line in lines:
+                if y + spacing > (height - margin):
+                    page = doc.new_page(width=width, height=height)
+                    y = margin
+                    rect = fitz.Rect(margin, y, width - margin, y + 15)
+                    page.insert_textbox(rect, "ContractLens Intelligence Summary", fontsize=8, fontname="Helvetica", color=(0.5, 0.5, 0.5))
+                    y += 20
+                    page.draw_line(fitz.Point(margin, y), fitz.Point(width - margin, y), color=(0.8, 0.8, 0.8), width=0.5)
+                    y += 15
+                
+                page.insert_text(fitz.Point(margin + x_indent, y + font_size), line, fontsize=font_size, fontname=fname, color=color)
+                y += spacing
+
+        # Title
+        rect = fitz.Rect(margin, y, width - margin, y + 30)
+        page.insert_textbox(rect, "CONTRACTLENS ANALYSIS SUMMARY REPORT", fontsize=16, fontname="Helvetica-Bold", align=1, color=(0.1, 0.2, 0.4))
+        y += 40
+        
+        # Doc ID & Date
+        rect = fitz.Rect(margin, y, width - margin, y + 25)
+        first_party = analysis.get("metadata", {}).get("first_party", "Contract")[:50]
+        date_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        page.insert_textbox(rect, f"Report Generated: {date_str}   |   Contract Profile: {first_party}", fontsize=9, fontname="Helvetica-Bold", align=1, color=(0.4, 0.4, 0.4))
+        y += 20
+        
+        page.draw_line(fitz.Point(margin, y), fitz.Point(width - margin, y), color=(0.1, 0.2, 0.4), width=1.5)
+        y += 25
+        
+        # --- Metadata Section ---
+        check_page(120)
+        write_paragraph("1. CONTRACT PARAMETERS PROFILE", font_size=12, font_name="Helvetica", is_bold=True, color=(0.1, 0.2, 0.4))
+        y += 5
+        
+        metadata = analysis.get("metadata", {})
+        metadata_fields = [
+            ("Effective Date", metadata.get("effective_date", "Not Specified")),
+            ("Duration", metadata.get("duration", "Not Specified")),
+            ("First Party (Client)", metadata.get("first_party", "Not Specified")),
+            ("Second Party (Contractor)", metadata.get("second_party", "Not Specified")),
+            ("Jurisdiction / Law", metadata.get("jurisdiction", "Not Specified")),
+        ]
+        
+        for label, val in metadata_fields:
+            check_page(20)
+            page.insert_text(fitz.Point(margin + 10, y + 10), f"{label}:", fontsize=10, fontname="Helvetica-Bold", color=(0.3, 0.3, 0.3))
+            page.insert_text(fitz.Point(margin + 190, y + 10), str(val), fontsize=10, fontname="Helvetica", color=(0.1, 0.1, 0.1))
+            y += 18
+            
+        y += 25
+        
+        # --- Risk Redlines Section ---
+        check_page(40)
+        write_paragraph("2. DETECTED RISK & NEGOTIATION REDLINES", font_size=12, font_name="Helvetica", is_bold=True, color=(0.1, 0.2, 0.4))
+        y += 5
+        
+        clauses = analysis.get("important_clauses", [])
+        if not clauses:
+            check_page(25)
+            write_paragraph("No critical risks detected in the analyzed clauses.", x_indent=10, font_name="Helvetica-Oblique", color=(0.4, 0.4, 0.4))
+        else:
+            def risk_sort_key(c):
+                lvl = c.get("risk_level", "MEDIUM").upper()
+                if lvl == "CRITICAL": return 0
+                if lvl == "HIGH": return 1
+                if lvl == "MEDIUM": return 2
+                return 3
+                
+            sorted_clauses = sorted(clauses, key=risk_sort_key)
+            for idx, clause in enumerate(sorted_clauses):
+                check_page(40)
+                title = clause.get("section_title", "Unspecified Section")
+                page_num = clause.get("page", 0)
+                level = clause.get("risk_level", "LOW")
+                type_val = clause.get("risk_type", "General")
+                crit = clause.get("criticality_score", 5)
+                conf = clause.get("confidence", 80)
+                legal = clause.get("legal_reason", "")
+                simple = clause.get("simple_reason", "")
+                remedy = clause.get("recommendation", "")
+                
+                # Format confidence value
+                if isinstance(conf, float) and conf <= 1.0:
+                    conf_str = f"{conf * 100:.1f}%"
+                else:
+                    conf_str = f"{conf}%"
+                
+                y += 5
+                write_paragraph(f"[{idx+1}] {title} (Page {page_num}) - {level} RISK", x_indent=10, font_size=10, font_name="Helvetica", is_bold=True, color=(0.8, 0.2, 0.2) if level in ["HIGH", "CRITICAL"] else (0.7, 0.4, 0.0))
+                write_paragraph(f"Risk Type: {type_val}   |   Criticality: {crit}/10   |   Confidence: {conf_str}", x_indent=20, font_size=9, font_name="Helvetica", is_bold=True, color=(0.4, 0.4, 0.4))
+                write_paragraph(f"Legal Rationale: {legal}", x_indent=20, font_size=9, color=(0.2, 0.2, 0.2))
+                write_paragraph(f"Simple Explanation: {simple}", x_indent=20, font_size=9, color=(0.3, 0.3, 0.3))
+                write_paragraph(f"Recommended Action: {remedy}", x_indent=20, font_size=9, font_name="Helvetica-Oblique", color=(0.1, 0.4, 0.2))
+                y += 10
+                
+        y += 15
+        
+        # --- Gap Audit Section ---
+        check_page(40)
+        write_paragraph("3. AUTOMATED GAP AUDIT (MISSING TERMS)", font_size=12, font_name="Helvetica", is_bold=True, color=(0.1, 0.2, 0.4))
+        y += 5
+        
+        gaps = analysis.get("gap_analysis", [])
+        if not gaps:
+            check_page(25)
+            write_paragraph("No critical boilerplate gaps or missing terms detected in this contract.", x_indent=10, font_name="Helvetica-Oblique", color=(0.4, 0.4, 0.4))
+        else:
+            for idx, gap in enumerate(gaps):
+                check_page(40)
+                title = gap.get("title", "Missing Clause")
+                severity = gap.get("impact_severity", "MEDIUM")
+                reason = gap.get("simple_explanation", gap.get("reason_missing", ""))
+                draft = gap.get("draft_text", "")
+                
+                write_paragraph(f"[{idx+1}] {title} - Severity: {severity}", x_indent=10, font_size=10, font_name="Helvetica", is_bold=True, color=(0.8, 0.2, 0.2) if severity == "HIGH" else (0.7, 0.4, 0.0))
+                write_paragraph(f"Plain English Translation: {reason}", x_indent=20, font_size=9, color=(0.2, 0.2, 0.2))
+                if draft:
+                    write_paragraph(f"Suggested Draft Clause:", x_indent=20, font_size=9, font_name="Helvetica-Bold", color=(0.3, 0.3, 0.3))
+                    write_paragraph(draft, x_indent=20, font_size=9, font_name="Courier", color=(0.1, 0.1, 0.1))
+                y += 10
+                
+        y += 15
+        
+        # --- Placeholders Section ---
+        placeholders = analysis.get("placeholders", [])
+        if placeholders:
+            check_page(40)
+            write_paragraph("4. INCOMPLETE PLACEHOLDERS LOCATOR", font_size=12, font_name="Helvetica", is_bold=True, color=(0.1, 0.2, 0.4))
+            y += 5
+            
+            for idx, p in enumerate(placeholders):
+                check_page(40)
+                matched_text = p.get("placeholder", "_______")
+                page_num = p.get("page", 1)
+                context = p.get("context", "")
+                
+                write_paragraph(f"[{idx+1}] Placeholder: \"{matched_text}\" (Page {page_num})", x_indent=10, font_size=10, font_name="Helvetica", is_bold=True, color=(0.1, 0.2, 0.4))
+                write_paragraph(f"Context: {context}", x_indent=20, font_size=9, color=(0.2, 0.2, 0.2))
+                y += 10
+
+        doc.save(output_path)
+        doc.close()
+        
+        return FileResponse(output_path, media_type="application/pdf", filename="summary_report.pdf")
+    except Exception as e:
+        print(f"Error generating summary PDF: {e}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Failed to generate summary PDF: {str(e)}")
+
 
 @app.post("/chat")
 async def chat(request: ChatRequest):
